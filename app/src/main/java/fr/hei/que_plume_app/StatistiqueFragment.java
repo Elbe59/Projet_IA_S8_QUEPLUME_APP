@@ -57,7 +57,7 @@ public class StatistiqueFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return 8;
+            return 30;
         }
 
         public class MyviewHolder extends RecyclerView.ViewHolder {

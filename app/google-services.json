@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1098525923789",
+    "firebase_url": "https://projetia-d96bc-default-rtdb.firebaseio.com",
+    "project_id": "projetia-d96bc",
+    "storage_bucket": "projetia-d96bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098525923789:android:a1963d57e70b8fdf928c84",
+        "android_client_info": {
+          "package_name": "fr.hei.que_plume_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098525923789-0kthn7s7rbpgjom4r53lkf4cfguffj3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACHn6RIgXaFEER9_2wEKtJS0Tkz1fm3oU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098525923789-0kthn7s7rbpgjom4r53lkf4cfguffj3v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
