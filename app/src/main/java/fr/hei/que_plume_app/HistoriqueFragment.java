@@ -1,26 +1,20 @@
 package fr.hei.que_plume_app;
 
-import android.database.SQLException;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
-public class HistoriqueActivity extends AppCompatActivity {
+public class HistoriqueFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private String TAG = "Histo_activity";
@@ -28,19 +22,21 @@ public class HistoriqueActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter_stat;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historique);
-        recyclerView = findViewById(R.id.recyclerView_historique);
+    public HistoriqueFragment() {}
 
-        layoutManager = new LinearLayoutManager(this);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view =  inflater.inflate(R.layout.activity_historique, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView_historique);
+
+        layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         adapter_stat = new HistoAdapter();
         recyclerView.setAdapter(adapter_stat);
+        return view;
     }
 
     public class HistoAdapter  extends RecyclerView.Adapter<HistoAdapter.MyviewHolder> {
@@ -96,4 +92,6 @@ public class HistoriqueActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }
