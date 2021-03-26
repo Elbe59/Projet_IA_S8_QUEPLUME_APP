@@ -37,7 +37,7 @@ obj/
 .externalNativeBuild
 
 *.iml
-.gradle
+*.gradle
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
@@ -59,3 +59,7 @@ obj/
 *.tar.gz
 hs_err_pid*
 *.rar
+
+*.properties
+gradle/
+
