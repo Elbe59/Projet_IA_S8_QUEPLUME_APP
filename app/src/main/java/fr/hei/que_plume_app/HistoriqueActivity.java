@@ -26,7 +26,7 @@ public class HistoriqueActivity extends AppCompatActivity {
     private String TAG = "Histo_activity";
 
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter_stat;
+    private RecyclerView.Adapter adapter_histo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,8 @@ public class HistoriqueActivity extends AppCompatActivity {
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        adapter_stat = new HistoAdapter();
-        recyclerView.setAdapter(adapter_stat);
+        adapter_histo = new HistoAdapter();
+        recyclerView.setAdapter(adapter_histo);
     }
 
     public class HistoAdapter  extends RecyclerView.Adapter<HistoAdapter.MyviewHolder> {
@@ -54,13 +54,13 @@ public class HistoriqueActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(MyviewHolder holder, int position) {
-            holder.setLine();
+            holder.setLine(position);
             Log.d(TAG,"line : " + position);
         }
 
         @Override
         public int getItemCount() {
-            return 8;
+            return 30;
         }
 
         public class MyviewHolder extends RecyclerView.ViewHolder {
@@ -76,10 +76,10 @@ public class HistoriqueActivity extends AppCompatActivity {
                 date = itemView.findViewById(R.id.textview_dateheure_erreur);
             }
 
-            public void setLine() {
+            public void setLine(int position) {
                 image_pred.setText("vide");
                 image_piece.setText("empty");
-                date.setText("jour/mois/an heure/minute");
+                date.setText(position+""+position+"/"+position+""+position+"/"+position+""+position+"  "+position+""+position+":"+position+""+position);
 
                 /*
                 Picasso.get().load(prdt.getImage()).into(this.img_prdt, new Callback() {
