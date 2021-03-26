@@ -1,4 +1,4 @@
-package fr.nitneuq.projet_ia_s8_queplume_app;
+package fr.hei.que_plume_app;
 
 import android.database.SQLException;
 import android.os.AsyncTask;
