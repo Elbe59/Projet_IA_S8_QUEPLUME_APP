@@ -25,7 +25,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_que);
-        mTextViewBoiteNoir = (TextView) findViewById(R.id);
+        mTextViewBoiteNoir = (TextView) findViewById(R.id.textview_boite_noir);
 
 
     }
