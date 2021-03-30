@@ -27,45 +27,25 @@
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-<<<<<<< HEAD
                     android:text="Réalité:"
                     android:gravity="center"
                     android:textStyle="bold">
-=======
-                    android:text="Image pièce"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
-                    android:gravity="center">
->>>>>>> b27b7bcc0ca8588621c0ba4eda35e3bd8be01046
                 </TextView>
                 <TextView
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-<<<<<<< HEAD
                     android:text="Prédiction: "
                     android:gravity="center"
                     android:textStyle="bold">
-=======
-                    android:text="Image prédiction"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
-                    android:gravity="center">
->>>>>>> b27b7bcc0ca8588621c0ba4eda35e3bd8be01046
                 </TextView>
                 <TextView
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="Total erreur"
-<<<<<<< HEAD
                     android:gravity="center"
                     android:textStyle="bold">
-=======
-                    android:textStyle="bold"
-                    android:textSize="15dp"
-                    android:gravity="center">
->>>>>>> b27b7bcc0ca8588621c0ba4eda35e3bd8be01046
                 </TextView>
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView

@@ -70,11 +70,12 @@ public class Singleton {
             for (int j = 0; j < typeFinalPred.size() ; j++) {
                 if(typePred.get(i).equals(typeFinalPred.get(j)) && typeReel.get(i).equals(typeFinalReel.get(j))) {
                     exists = true;
-                    rank = i;
+                    rank = j;
                 }
             }
             if (exists && rank != -1){
                 Log.d("SINGLETON", "SINGLETON: rank "+rank);
+                Log.d("SINGLETON", "SINGLETON: type pred "+typePred.get(rank)+" type reel "+typeReel.get(rank));
                 nbErreurs.set(rank, (nbErreurs.get(rank))+1);
 
             }else
