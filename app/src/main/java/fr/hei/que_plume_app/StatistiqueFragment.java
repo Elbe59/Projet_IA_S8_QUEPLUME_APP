@@ -14,6 +14,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
+import fr.hei.que_plume_app.entity.ErreurIA;
+
 public class StatistiqueFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -21,6 +25,8 @@ public class StatistiqueFragment extends Fragment {
 
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter_stat;
+
+    private ArrayList<ErreurIA> listErreur;
 
     public StatistiqueFragment() {}
 
@@ -36,7 +42,7 @@ public class StatistiqueFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         adapter_stat = new StatAdapter();
         recyclerView.setAdapter(adapter_stat);
-
+        listErreur = Singleton.getInstance().getErreurs();
         return view;
     }
 
@@ -51,13 +57,13 @@ public class StatistiqueFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(MyviewHolder holder, int position) {
-            holder.setLine();
+            holder.setLine(position);
             Log.d(TAG,"line : " + position);
         }
 
         @Override
         public int getItemCount() {
-            return 30;
+            return Singleton.getInstance().getTotalErreur().size();
         }
 
         public class MyviewHolder extends RecyclerView.ViewHolder {
@@ -73,23 +79,29 @@ public class StatistiqueFragment extends Fragment {
                 total_erreur = itemView.findViewById(R.id.textview_total_erreur);
             }
 
-            public void setLine() {
-                image_pred.setText("vide");
-                image_piece.setText("empty");
-                total_erreur.setText("NULL");
+            public void setLine(int pos) {
+                ArrayList<String> line = decode(Singleton.getInstance().getTotalErreur().get(pos));
+                image_pred.setText(line.get(1));
+                image_piece.setText(line.get(0));
+                total_erreur.setText(line.get(2));
+            }
 
-                /*
-                Picasso.get().load(prdt.getImage()).into(this.img_prdt, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        Log.d(TAG, "Success : " + prdt.getNom());
+            public ArrayList<String> decode(String str)
+            {
+                String actuel = "";
+                ArrayList<String> res = new ArrayList<String>();
+                for (int i = 0; i < str.length() ; i++) {
+                    if (str.charAt(i) == ':')
+                    {
+                        res.add(actuel);
+                        actuel = "";
+                    }else{
+                        actuel = actuel.concat(str.charAt(i)+"");
                     }
-
-                    @Override
-                    public void onError(Exception e) {
-                        Log.d(TAG, e.getMessage() + " " + prdt.getNom());
-                    }
-                });*/
+                }
+                res.add(actuel);
+                Log.d("STAT", "STATS: res "+res);
+                return res;
             }
         }
     }

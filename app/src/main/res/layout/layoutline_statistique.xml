@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
+            android:gravity="center"
             android:id="@+id/textview_image_piece">
         </TextView>
         <TextView
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
+            android:gravity="center"
             android:id="@+id/textview_total_erreur">
 
         </TextView>

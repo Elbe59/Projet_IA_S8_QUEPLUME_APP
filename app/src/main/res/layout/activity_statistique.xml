@@ -54,14 +54,16 @@
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:layout_weight="1"
-                    android:text="Image pièce"
+                    android:text="Réalité:"
+                    android:gravity="center"
                     android:textStyle="bold">
                 </TextView>
                 <TextView
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:layout_weight="1"
-                    android:text="Image prédiction"
+                    android:text="Prédiction: "
+                    android:gravity="center"
                     android:textStyle="bold">
                 </TextView>
                 <TextView
@@ -69,6 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:text="Total erreur"
+                    android:gravity="center"
                     android:textStyle="bold">
                 </TextView>
             </LinearLayout>

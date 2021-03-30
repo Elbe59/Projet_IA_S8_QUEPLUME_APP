@@ -38,6 +38,62 @@ public class Singleton {
         return singleton;
     }
 
+    public ArrayList<String> getTypePred()
+    {
+        ArrayList<String> res = new ArrayList<String>();
+        for (int i = 0; i < this.listeErreurs.size() ; i++) {
+            res.add(this.listeErreurs.get(i).getType_trouve()+"_"+this.listeErreurs.get(i).getCouleur_trouvee());
+        }
+        return res;
+    }
+
+    public ArrayList<String> getTypeReel()
+    {
+        ArrayList<String> res = new ArrayList<String>();
+        for (int i = 0; i < this.listeErreurs.size() ; i++) {
+            res.add(this.listeErreurs.get(i).getType_reel()+"_"+this.listeErreurs.get(i).getCouleur_reelle());
+        }
+        return res;
+    }
+
+    public ArrayList<String> getTotalErreur(){
+
+        ArrayList<String> typePred = getTypePred();
+        ArrayList<String> typeReel = getTypeReel();
+        ArrayList<String> typeFinalPred = new ArrayList<String>();
+        ArrayList<String> typeFinalReel = new ArrayList<String>();
+        ArrayList<Integer> nbErreurs = new ArrayList<Integer>();
+
+        for (int i = 0; i < typePred.size() ; i++) {
+            boolean exists = false;
+            int rank = -1;
+            for (int j = 0; j < typeFinalPred.size() ; j++) {
+                if(typePred.get(i).equals(typeFinalPred.get(j)) && typeReel.get(i).equals(typeFinalReel.get(j))) {
+                    exists = true;
+                    rank = i;
+                }
+            }
+            if (exists && rank != -1){
+                Log.d("SINGLETON", "SINGLETON: rank "+rank);
+                nbErreurs.set(rank, (nbErreurs.get(rank))+1);
+
+            }else
+            {
+                typeFinalPred.add(typePred.get(i));
+                typeFinalReel.add(typeReel.get(i));
+                nbErreurs.add(1);
+            }
+        }
+        ArrayList<String> res = new ArrayList<String>();
+        for (int j = 0; j < typeFinalPred.size(); j++) {
+            res.add(typeFinalReel.get(j) + ":" + typeFinalPred.get(j) + ":" + nbErreurs.get(j));
+        }
+        Log.d("SINGLETON ","SINGLETON: taille erreurs "+nbErreurs.size()+" Pred "+typeFinalPred.size()+" Reel "+typeFinalReel.size());
+        Log.d("SINGLETON", "SINGLETON: res "+res);
+        Log.d("SINGLETON", "SINGLETON: taille res "+res.size());
+        return res;
+    }
+
     public ArrayList<ErreurIA> getErreurs() {
         return listeErreurs;
     }
