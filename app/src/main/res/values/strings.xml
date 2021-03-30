@@ -2,11 +2,10 @@
     <string name="app_name">QUE-PLUME-APP</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Que-Plume Application</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="menu_principal">Menu principal</string>
+    <string name="menu_principal">Tableau de bord</string>
     <string name="menu_historique">Historique des erreurs</string>
     <string name="menu_statistiques">Statistiques des erreurs</string>
 </resources>
