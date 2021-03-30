@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import fr.hei.que_plume_app.entity.ErreurIA;
+
 public class HistoriqueFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -34,13 +36,12 @@ public class HistoriqueFragment extends Fragment {
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
-        adapter_stat = new HistoAdapter();
+        adapter_stat = new HistoriqueAdapter();
         recyclerView.setAdapter(adapter_stat);
         return view;
     }
 
-    public class HistoAdapter  extends RecyclerView.Adapter<HistoAdapter.MyviewHolder> {
-
+    public class HistoriqueAdapter  extends RecyclerView.Adapter<HistoriqueAdapter.MyviewHolder> {
         @NonNull
         @Override
         public MyviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,45 +51,34 @@ public class HistoriqueFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(MyviewHolder holder, int position) {
-            holder.setLine();
-            Log.d(TAG,"line : " + position);
+            holder.setErreur(Singleton.getInstance().getErreurInOrderAtPosition(position));
         }
 
         @Override
         public int getItemCount() {
-            return 8;
+            return Singleton.getInstance().getErreurs().size();
         }
 
         public class MyviewHolder extends RecyclerView.ViewHolder {
 
-            private TextView image_pred;
-            private TextView image_piece;
-            private TextView date;
+            private TextView mTextViewPrediction;
+            private TextView mTextViewRealite;
+            private TextView mTextViewDate;
 
             public MyviewHolder(@NonNull View itemView) {
                 super(itemView);
-                image_pred = itemView.findViewById(R.id.textview_image_prediction_histo);
-                image_piece = itemView.findViewById(R.id.textview_image_piece_histo);
-                date = itemView.findViewById(R.id.textview_dateheure_erreur);
+                mTextViewPrediction = (TextView) itemView.findViewById(R.id.textview_historique_prediction_IA);
+                mTextViewRealite = (TextView) itemView.findViewById(R.id.textview_historique_realite_piece);
+                mTextViewDate = (TextView) itemView.findViewById(R.id.textview_historique_dateheure_erreur);
             }
 
-            public void setLine() {
-                image_pred.setText("vide");
-                image_piece.setText("empty");
-                date.setText("jour/mois/an heure/minute");
-
-                /*
-                Picasso.get().load(prdt.getImage()).into(this.img_prdt, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        Log.d(TAG, "Success : " + prdt.getNom());
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-                        Log.d(TAG, e.getMessage() + " " + prdt.getNom());
-                    }
-                });*/
+            public void setErreur(ErreurIA erreurIA) {
+                String prediction = erreurIA.getType_trouve() + " - " + erreurIA.getCouleur_trouvee();
+                String realite = erreurIA.getType_reel() + " - " + erreurIA.getCouleur_reelle();
+                String date = erreurIA.getDate();
+                mTextViewPrediction.setText(prediction);
+                mTextViewRealite.setText(realite);
+                mTextViewDate.setText(date);
             }
         }
     }
