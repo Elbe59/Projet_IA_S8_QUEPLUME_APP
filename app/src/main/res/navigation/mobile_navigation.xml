@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_menu_principal"
-        android:name="fr.hei.que_plume_app.MenuFragment"
+        android:name="fr.hei.que_plume_app.AccueilFragment"
         android:label="@string/menu_principal"
         tools:layout="@layout/activity_menu" />
 

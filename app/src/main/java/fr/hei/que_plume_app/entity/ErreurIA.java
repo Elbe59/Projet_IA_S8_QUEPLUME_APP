@@ -7,7 +7,7 @@ public class ErreurIA {
     private String type_trouve;
     private String couleur_trouvee;
     private String type_reel;
-    private String couleur_reel;
+    private String couleur_reelle;
     private String date;
     private String id;
     private String image;
@@ -46,12 +46,12 @@ public class ErreurIA {
         this.type_reel = type_reel;
     }
 
-    public String getCouleur_reel() {
-        return couleur_reel;
+    public String getCouleur_reelle() {
+        return couleur_reelle;
     }
 
-    public void setCouleur_reel(String couleur_reel) {
-        this.couleur_reel = couleur_reel;
+    public void setCouleur_reelle(String couleur_reel) {
+        this.couleur_reelle = couleur_reel;
     }
 
     public String getDate() {
@@ -68,6 +68,10 @@ public class ErreurIA {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String toString(){
+        return (couleur_reelle +" - " + couleur_trouvee +" - " + date +" - " + id +" - " + image +" - " + type_reel +" - " + type_trouve);
     }
 
 }
