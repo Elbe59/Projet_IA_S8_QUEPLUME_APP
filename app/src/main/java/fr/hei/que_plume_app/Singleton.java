@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import fr.hei.que_plume_app.entity.ErreurIA;
 
@@ -99,8 +100,22 @@ public class Singleton {
         return listeErreurs;
     }
 
+    public ArrayList<ErreurIA> getListErreursInOrder(){  // Les erreurs sont stockés dans l'ordre de la plus ancienne a la plus récente. Il faut donc inverser la liste
+        ArrayList<ErreurIA> newListeErreursInOrder = getErreurs();
+        Collections.reverse(newListeErreursInOrder);
+        return newListeErreursInOrder;
+    }
+
     public void setErreurs(ArrayList<ErreurIA> erreur) {
         this.listeErreurs = erreur;
+    }
+
+    public ErreurIA getErreurAtPosition(int position){
+        return listeErreurs.get(position);
+    }
+
+    public ErreurIA getErreurInOrderAtPosition(int position){
+        return getListErreursInOrder().get(position);
     }
 
     public void fetchFromDatabase(Context c, boolean showToasts){
