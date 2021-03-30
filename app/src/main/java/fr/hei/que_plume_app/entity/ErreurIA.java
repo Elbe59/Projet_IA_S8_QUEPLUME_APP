@@ -4,27 +4,38 @@ import java.time.LocalDateTime;
 
 public class ErreurIA {
 
-    private String type;
-    private String couleur;
+    private String type_trouve;
+    private String couleur_trouvee;
     private String type_reel;
     private String couleur_reel;
-    private LocalDateTime date;
-    private int id;
+    private String date;
+    private String id;
+    private String image;
 
-    public String getType() {
-        return type;
+    public ErreurIA(){}
+
+    public String getImage() {
+        return image;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getCouleur() {
-        return couleur;
+    public String getType_trouve() {
+        return type_trouve;
     }
 
-    public void setCouleur(String couleur) {
-        this.couleur = couleur;
+    public void setType_trouve(String type_trouve) {
+        this.type_trouve = type_trouve;
+    }
+
+    public String getCouleur_trouvee() {
+        return couleur_trouvee;
+    }
+
+    public void setCouleur_trouvee(String couleur_trouvee) {
+        this.couleur_trouvee = couleur_trouvee;
     }
 
     public String getType_reel() {
@@ -43,29 +54,20 @@ public class ErreurIA {
         this.couleur_reel = couleur_reel;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public ErreurIA(int _id, String _type, String _type_reel, String _couleur_reel, String _couleur, LocalDateTime _date)
-    {
-        this.id = _id;
-        this.type=_type;
-        this.couleur = _couleur;
-        this.date = _date;
-        this.couleur_reel = _couleur_reel;
-        this.type_reel = _type_reel;
-    }
 }
