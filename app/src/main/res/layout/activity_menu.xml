@@ -175,6 +175,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="4"
                     android:gravity="center"
+                    android:textAlignment="textEnd"
                     android:textSize="50px"
                     android:text="Nombre de pièces traitées en 24h : "
                     android:textAppearance="?android:attr/textAppearanceLarge">
@@ -201,6 +202,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="4"
                     android:gravity="center"
+                    android:textAlignment="textEnd"
                     android:textSize="50px"
                     android:text="Nombre d'erreurs en 24h : "
                     android:textAppearance="?android:attr/textAppearanceLarge">
