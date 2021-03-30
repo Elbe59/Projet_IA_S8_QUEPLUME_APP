@@ -8,40 +8,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_light_gray">
+        android:background="@drawable/background">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_margin="30dp"
-                    android:padding="2dp"
-                    android:background="@drawable/border"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:text="Historique"
-                    android:textSize="35dp"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textStyle="bold">
-                </TextView>
-            </LinearLayout>
-        </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8"
+            android:layout_weight="1"
             android:background="@drawable/border_white"
-            android:layout_margin="20dp">
+            android:layout_margin="2dp">
             <LinearLayout
                 android:id="@+id/title_stat"
                 android:orientation="horizontal"
@@ -54,21 +29,27 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="j/m/a h:m"
-                    android:textStyle="bold">
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:gravity="center">
                 </TextView>
                 <TextView
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="Prédiction"
-                    android:textStyle="bold">
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:gravity="center">
                 </TextView>
                 <TextView
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="Image piece"
-                    android:textStyle="bold">
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:gravity="center">
                 </TextView>
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView

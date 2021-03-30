@@ -6,15 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_menu_principal"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="?attr/actionModePasteDrawable"
             android:title="@string/menu_principal" />
         <item
             android:id="@+id/nav_menu_historique"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@android:drawable/ic_menu_recent_history"
             android:title="@string/menu_historique" />
         <item
             android:id="@+id/nav_menu_statistiques"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@android:drawable/ic_menu_sort_by_size"
             android:title="@string/menu_statistiques" />
     </group>
 </menu>
