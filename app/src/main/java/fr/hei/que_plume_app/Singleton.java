@@ -87,12 +87,31 @@ public class Singleton {
         }
         ArrayList<String> res = new ArrayList<String>();
         for (int j = 0; j < typeFinalPred.size(); j++) {
-            res.add(typeFinalReel.get(j) + ":" + typeFinalPred.get(j) + ":" + nbErreurs.get(j));
+            int imax = getRankOfMaxFromList(nbErreurs);
+            res.add(typeFinalReel.get(imax) + ":" + typeFinalPred.get(imax) + ":" + nbErreurs.get(imax));
+            nbErreurs.set(imax, 0);
         }
         Log.d("SINGLETON ","SINGLETON: taille erreurs "+nbErreurs.size()+" Pred "+typeFinalPred.size()+" Reel "+typeFinalReel.size());
         Log.d("SINGLETON", "SINGLETON: res "+res);
         Log.d("SINGLETON", "SINGLETON: taille res "+res.size());
         return res;
+    }
+
+    public int getRankOfMaxFromList(ArrayList<Integer> lst)
+    {
+        int rank = 0;
+        for (int i = 0; i < lst.size() ; i++) {
+            int actuel = lst.get(i);
+            boolean ismax = true;
+            for (int j = 0; j < lst.size() ; j++) {
+                if (actuel < lst.get(j))
+                {
+                    ismax = false;
+                }
+            }
+            if (ismax) rank = i;
+        }
+        return rank;
     }
 
     public ArrayList<ErreurIA> getErreurs() {
