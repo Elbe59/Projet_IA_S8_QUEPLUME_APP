@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-public class MenuFragment extends Fragment {
+public class AccueilFragment extends Fragment {
 
     private TextView mTextViewBoiteNoir;
     private TextView mTextViewBoiteBlanche;
@@ -21,7 +21,7 @@ public class MenuFragment extends Fragment {
 
     private String TAG = "Menu_activity";
 
-    public MenuFragment() {}
+    public AccueilFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
