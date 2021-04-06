@@ -24,9 +24,8 @@ public class StatistiqueFragment extends Fragment {
     private String TAG = "Stat_activity";
 
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter_stat;
 
-    private ArrayList<ErreurIA> listErreur;
+    private ArrayList<String> listErreur;
 
     public StatistiqueFragment() {}
 
@@ -40,14 +39,13 @@ public class StatistiqueFragment extends Fragment {
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
-        adapter_stat = new StatAdapter();
-        recyclerView.setAdapter(adapter_stat);
-        listErreur = Singleton.getInstance().getErreurs();
+        Singleton.getInstance().adapter_statistique = new StatistiqueAdapter();
+        recyclerView.setAdapter(Singleton.getInstance().adapter_statistique);
+        listErreur = Singleton.getInstance().getTotalErreur();
         return view;
     }
 
-    public class StatAdapter  extends RecyclerView.Adapter<StatAdapter.MyviewHolder> {
-
+    public class StatistiqueAdapter  extends RecyclerView.Adapter<StatistiqueAdapter.MyviewHolder> {
         @NonNull
         @Override
         public MyviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

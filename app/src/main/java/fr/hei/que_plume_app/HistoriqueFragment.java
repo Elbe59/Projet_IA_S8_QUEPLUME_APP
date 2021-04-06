@@ -22,7 +22,7 @@ public class HistoriqueFragment extends Fragment {
     private String TAG = "Histo_activity";
 
     private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView.Adapter adapter_stat;
+
 
     public HistoriqueFragment() {}
 
@@ -36,8 +36,8 @@ public class HistoriqueFragment extends Fragment {
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
-        adapter_stat = new HistoriqueAdapter();
-        recyclerView.setAdapter(adapter_stat);
+        Singleton.getInstance().adapter_historique = new HistoriqueAdapter();
+        recyclerView.setAdapter(Singleton.getInstance().adapter_historique);
         return view;
     }
 
