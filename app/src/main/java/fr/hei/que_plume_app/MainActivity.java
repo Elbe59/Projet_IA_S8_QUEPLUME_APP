@@ -3,6 +3,7 @@ package fr.hei.que_plume_app;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private TextView nb_piece_traite;
+    private TextView nb_erreur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
+        nb_piece_traite = findViewById(R.id.textview_nbr_pieces_24h);
+        nb_erreur = findViewById(R.id.textview_nbr_erreurs_24h);
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_menu_principal, R.id.nav_menu_historique, R.id.nav_menu_statistiques)
                 .setDrawerLayout(drawer)
@@ -51,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().goOnline();
         Singleton.getInstance().fetchFromDatabase(this, true);
-        Singleton.getInstance().getDate();
+        //Singleton.getInstance().getDateActual();
+        nb_piece_traite.setText(Singleton.getInstance().getNbPieceTraitee());
+        nb_erreur.setText(Singleton.getInstance().getNbErreurs());
     }
 
     @Override
