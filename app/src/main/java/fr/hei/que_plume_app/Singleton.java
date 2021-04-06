@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +24,9 @@ import java.util.Collections;
 import fr.hei.que_plume_app.entity.ErreurIA;
 
 public class Singleton {
+
+    public RecyclerView.Adapter adapter_historique;
+    public RecyclerView.Adapter adapter_statistique;
 
     private static final String TAG = "Singleton: ";
     private static Singleton singleton;
@@ -152,6 +156,13 @@ public class Singleton {
                     ErreurIA erreurIA = ds.getValue(ErreurIA.class);
                     Log.i(TAG, erreurIA.toString());
                     listeErreurs.add(erreurIA);
+                    if(adapter_historique != null){
+                        adapter_historique.notifyDataSetChanged();
+                    }
+                    if(adapter_statistique != null){
+                        adapter_statistique.notifyDataSetChanged();
+                    }
+
                 }
                 toast_db.setText("Database synced.");
             }
