@@ -1,7 +1,6 @@
 package fr.hei.que_plume_app;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import fr.hei.que_plume_app.entity.ErreurIA;
+import fr.hei.que_plume_app.entity.AjoutData;
 
 public class HistoriqueFragment extends Fragment {
 
@@ -72,10 +71,10 @@ public class HistoriqueFragment extends Fragment {
                 mTextViewDate = (TextView) itemView.findViewById(R.id.textview_historique_dateheure_erreur);
             }
 
-            public void setErreur(ErreurIA erreurIA) {
-                String prediction = erreurIA.getType_trouve() + " - " + erreurIA.getCouleur_trouvee();
-                String realite = erreurIA.getType_reel() + " - " + erreurIA.getCouleur_reelle();
-                String date = erreurIA.getDate();
+            public void setErreur(AjoutData ajoutData) {
+                String prediction = ajoutData.getType_trouve() + " - " + ajoutData.getCouleur_trouvee();
+                String realite = ajoutData.getType_reel() + " - " + ajoutData.getCouleur_reelle();
+                String date = ajoutData.getDate();
                 mTextViewPrediction.setText(prediction);
                 mTextViewRealite.setText(realite);
                 mTextViewDate.setText(date);

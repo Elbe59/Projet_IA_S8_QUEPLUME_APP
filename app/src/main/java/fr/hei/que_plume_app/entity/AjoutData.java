@@ -2,7 +2,7 @@ package fr.hei.que_plume_app.entity;
 
 import java.time.LocalDateTime;
 
-public class ErreurIA {
+public class AjoutData {
 
     private String type_trouve;
     private String couleur_trouvee;
@@ -12,7 +12,7 @@ public class ErreurIA {
     private String id;
     private String image;
 
-    public ErreurIA(){}
+    public AjoutData(){}
 
     public String getImage() {
         return image;

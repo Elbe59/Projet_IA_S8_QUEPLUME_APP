@@ -16,8 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import fr.hei.que_plume_app.entity.ErreurIA;
-
 public class StatistiqueFragment extends Fragment {
 
     private RecyclerView recyclerView;
