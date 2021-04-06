@@ -41,6 +41,10 @@ public class ActualData {
         return maHashMapDataActuel;
     }
 
+    public String actualDataToString(){
+        return (false_boite_blanche +" - " + false_boite_noire +" - " + false_couvercle_blanc +" - " + false_couvercle_noir +" - " + false_goupille_grise +" - " + false_goupille_rouge +" - " + true_boite_blanche +" - " + true_boite_noire +" - " + true_couvercle_blanc +" - " + true_couvercle_noir +" - " + true_goupille_grise +" - " + true_goupille_rouge);
+    }
+
 
     public Integer getTrue_goupille_grise() {
         return true_goupille_grise;

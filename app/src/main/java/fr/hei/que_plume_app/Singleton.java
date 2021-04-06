@@ -227,7 +227,7 @@ public class Singleton {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dataActuel = new ActualData();
                 dataActuel = dataSnapshot.getValue(ActualData.class); // A modifier en fct de ce qui est écrit dans la database
-                Log.i(TAG, dataActuel.toString());
+                Log.i(TAG, dataActuel.actualDataToString());
                 /*for (DataSnapshot ds: dataSnapshot.getChildren()) {
                     dataActuel = ds.getValue(ActualData.class); // A modifier en fct de ce qui est écrit dans la database
                     Log.i(TAG, dataActuel.toString());

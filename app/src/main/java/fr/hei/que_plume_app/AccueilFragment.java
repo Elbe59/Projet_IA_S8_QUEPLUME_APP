@@ -32,6 +32,7 @@ public class AccueilFragment extends Fragment {
     private TextView mTextViewNbrErreurs;
     private TextView mTextViewNbrTraiter;
 
+
     private String TAG = "Menu_activity";
 
     public AccueilFragment() {}
@@ -39,6 +40,7 @@ public class AccueilFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.activity_menu, container, false);
+
 
         //Singleton.getInstance().getDateActual();
 
@@ -53,11 +55,12 @@ public class AccueilFragment extends Fragment {
 
         DatabaseReference zonesRefActuel = FirebaseDatabase.getInstance().getReference("resultat");
         zonesRefActuel.addValueEventListener(new ValueEventListener() {
+
             Toast toast_db = Toast.makeText(getContext(),"Trying to connect to the database...", Toast.LENGTH_SHORT);
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 toast_db.setText("Database synced");
-                //miseAJourTextView();
+                miseAJourTextView();
             }
 
             @Override
@@ -78,33 +81,31 @@ public class AccueilFragment extends Fragment {
         for (Map.Entry<String, Integer> entry : hashMapActualData.entrySet()) {
             System.out.println(entry.getKey() + " = " + entry.getValue());
             if(entry.getKey().equals("true_goupille_grise")){
-                mTextViewGoupilleGrise.setText(entry.getValue());
+                mTextViewGoupilleGrise.setText(entry.getValue().toString());
             }
             if(entry.getKey().equals("true_goupille_rouge")){
-                mTextViewGoupilleRouge.setText(entry.getValue());
+                mTextViewGoupilleRouge.setText(entry.getValue().toString());
             }
             if(entry.getKey().equals("true_couvercle_noir")){
-                mTextViewCouvercleNoir.setText(entry.getValue());
+                mTextViewCouvercleNoir.setText(entry.getValue().toString());
             }
             if(entry.getKey().equals("true_couvercle_blanc")){
-                mTextViewCouvercleBlanc.setText(entry.getValue());
+                mTextViewCouvercleBlanc.setText(entry.getValue().toString());
             }
             if(entry.getKey().equals("true_boite_noire")){
-                mTextViewBoiteNoire.setText(entry.getValue());
+                mTextViewBoiteNoire.setText(entry.getValue().toString());
             }
             if(entry.getKey().equals("true_boite_blanche")){
-                mTextViewBoiteBlanche.setText(entry.getValue());
+                mTextViewBoiteBlanche.setText(entry.getValue().toString());
             }
             if(entry.getKey().equals("false_goupille_grise")){
                 if(entry.getValue() != 0){
                     mTextViewGoupilleGrise.setText("Erreur");
-
                 }
             }
             if(entry.getKey().equals("false_goupille_rouge")){
                 if(entry.getValue() != 0){
                     mTextViewGoupilleRouge.setText("Erreur");
-
                 }
             }
             if(entry.getKey().equals("false_couvercle_noir")){
