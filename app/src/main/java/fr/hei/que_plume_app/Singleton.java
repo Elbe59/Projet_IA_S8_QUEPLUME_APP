@@ -2,6 +2,9 @@ package fr.hei.que_plume_app;
 
 import android.content.Context;
 import android.hardware.usb.UsbInterface;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
+import android.icu.util.TimeZone;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
@@ -17,8 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import fr.hei.que_plume_app.entity.ErreurIA;
 
@@ -95,6 +100,24 @@ public class Singleton {
         Log.d("SINGLETON ","SINGLETON: taille erreurs "+nbErreurs.size()+" Pred "+typeFinalPred.size()+" Reel "+typeFinalReel.size());
         Log.d("SINGLETON", "SINGLETON: res "+res);
         Log.d("SINGLETON", "SINGLETON: taille res "+res.size());
+        return res;
+    }
+
+    public ArrayList<String> decode(String str)
+    {
+        String actuel = "";
+        ArrayList<String> res = new ArrayList<String>();
+        for (int i = 0; i < str.length() ; i++) {
+            if (str.charAt(i) == ':')
+            {
+                res.add(actuel);
+                actuel = "";
+            }else{
+                actuel = actuel.concat(str.charAt(i)+"");
+            }
+        }
+        res.add(actuel);
+        Log.d("STAT", "STATS: res "+res);
         return res;
     }
 
@@ -188,6 +211,13 @@ public class Singleton {
                 //if(showToasts) toast_db.show();
             }
         });
+    }
+
+    public void getDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        sdf.setTimeZone(TimeZone.getDefault());
+        String currentDateandTime = sdf.format(Calendar.getInstance().getTime());
+        Log.d("DATE LE FRUIT: ","DATE ET HEURE : "+currentDateandTime);
     }
 }
 

@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().goOnline();
         Singleton.getInstance().fetchFromDatabase(this, true);
-
+        Singleton.getInstance().getDate();
     }
 
     @Override

@@ -80,28 +80,10 @@ public class StatistiqueFragment extends Fragment {
             }
 
             public void setLine(int pos) {
-                ArrayList<String> line = decode(Singleton.getInstance().getTotalErreur().get(pos));
+                ArrayList<String> line = Singleton.getInstance().decode(Singleton.getInstance().getTotalErreur().get(pos));
                 image_pred.setText(line.get(1));
                 image_piece.setText(line.get(0));
                 total_erreur.setText(line.get(2));
-            }
-
-            public ArrayList<String> decode(String str)
-            {
-                String actuel = "";
-                ArrayList<String> res = new ArrayList<String>();
-                for (int i = 0; i < str.length() ; i++) {
-                    if (str.charAt(i) == ':')
-                    {
-                        res.add(actuel);
-                        actuel = "";
-                    }else{
-                        actuel = actuel.concat(str.charAt(i)+"");
-                    }
-                }
-                res.add(actuel);
-                Log.d("STAT", "STATS: res "+res);
-                return res;
             }
         }
     }
