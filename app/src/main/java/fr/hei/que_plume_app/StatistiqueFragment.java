@@ -25,7 +25,7 @@ public class StatistiqueFragment extends Fragment {
 
     private RecyclerView.LayoutManager layoutManager;
 
-    private ArrayList<String> listErreur;
+    //private ArrayList<String> listErreur;
 
     public StatistiqueFragment() {}
 
@@ -41,7 +41,7 @@ public class StatistiqueFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         Singleton.getInstance().adapter_statistique = new StatistiqueAdapter();
         recyclerView.setAdapter(Singleton.getInstance().adapter_statistique);
-        listErreur = Singleton.getInstance().getTotalErreur();
+        //listErreur = Singleton.getInstance().getTotalErreur();
         return view;
     }
 
@@ -55,7 +55,7 @@ public class StatistiqueFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(MyviewHolder holder, int position) {
-            holder.setLine(position);
+            holder.setLine(Singleton.getInstance().decode(Singleton.getInstance().getTotalErreur().get(position)));
             Log.d(TAG,"line : " + position);
         }
 
@@ -77,8 +77,8 @@ public class StatistiqueFragment extends Fragment {
                 total_erreur = itemView.findViewById(R.id.textview_total_erreur);
             }
 
-            public void setLine(int pos) {
-                ArrayList<String> line = Singleton.getInstance().decode(Singleton.getInstance().getTotalErreur().get(pos));
+            public void setLine(ArrayList<String> line) {
+                //ArrayList<String> line = Singleton.getInstance().decode(Singleton.getInstance().getTotalErreur().get(pos));
                 image_pred.setText(line.get(1));
                 image_piece.setText(line.get(0));
                 total_erreur.setText(line.get(2));
