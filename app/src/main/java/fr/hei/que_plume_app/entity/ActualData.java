@@ -6,52 +6,52 @@ import java.util.Map;
 public class ActualData {
 
 
-    private Integer true_goupille_grise;
+    private Integer true_goupille_gris;
     private Integer true_goupille_rouge;
     private Integer true_couvercle_noir;
     private Integer true_couvercle_blanc;
-    private Integer true_boite_noire;
-    private Integer true_boite_blanche;
+    private Integer true_boite_noir;
+    private Integer true_boite_blanc;
 
 
-    private Integer false_goupille_grise;
+    private Integer false_goupille_gris;
     private Integer false_goupille_rouge;
     private Integer false_couvercle_noir;
     private Integer false_couvercle_blanc;
-    private Integer false_boite_noire;
-    private Integer false_boite_blanche;
+    private Integer false_boite_noir;
+    private Integer false_boite_blanc;
 
 
     public ActualData(){}
 
     public Map<String, Integer> getMaHashMapDataActuel() {
         Map<String,Integer> maHashMapDataActuel = new HashMap<String,Integer>();
-        maHashMapDataActuel.put("true_goupille_grise",getTrue_goupille_grise());
+        maHashMapDataActuel.put("true_goupille_gris", getTrue_goupille_gris());
         maHashMapDataActuel.put("true_goupille_rouge",getTrue_goupille_rouge());
         maHashMapDataActuel.put("true_couvercle_noir",getTrue_couvercle_noir());
         maHashMapDataActuel.put("true_couvercle_blanc",getTrue_couvercle_blanc());
-        maHashMapDataActuel.put("true_boite_noire",getTrue_boite_noire());
-        maHashMapDataActuel.put("true_boite_blanche",getTrue_boite_blanche());
-        maHashMapDataActuel.put("false_goupille_grise",getFalse_goupille_grise());
+        maHashMapDataActuel.put("true_boite_noir", getTrue_boite_noir());
+        maHashMapDataActuel.put("true_boite_blanc", getTrue_boite_blanc());
+        maHashMapDataActuel.put("false_goupille_gris", getFalse_goupille_gris());
         maHashMapDataActuel.put("false_goupille_rouge",getFalse_goupille_rouge());
         maHashMapDataActuel.put("false_couvercle_noir",getFalse_couvercle_noir());
         maHashMapDataActuel.put("false_couvercle_blanc",getFalse_couvercle_blanc());
-        maHashMapDataActuel.put("false_boite_noire",getFalse_boite_noire());
-        maHashMapDataActuel.put("false_boite_blanche",getFalse_boite_blanche());
+        maHashMapDataActuel.put("false_boite_noir", getFalse_boite_noir());
+        maHashMapDataActuel.put("false_boite_blanc", getFalse_boite_blanc());
         return maHashMapDataActuel;
     }
 
     public String actualDataToString(){
-        return (false_boite_blanche +" - " + false_boite_noire +" - " + false_couvercle_blanc +" - " + false_couvercle_noir +" - " + false_goupille_grise +" - " + false_goupille_rouge +" - " + true_boite_blanche +" - " + true_boite_noire +" - " + true_couvercle_blanc +" - " + true_couvercle_noir +" - " + true_goupille_grise +" - " + true_goupille_rouge);
+        return (false_boite_blanc +" - " + false_boite_noir +" - " + false_couvercle_blanc +" - " + false_couvercle_noir +" - " + false_goupille_gris +" - " + false_goupille_rouge +" - " + true_boite_blanc +" - " + true_boite_noir +" - " + true_couvercle_blanc +" - " + true_couvercle_noir +" - " + true_goupille_gris +" - " + true_goupille_rouge);
     }
 
 
-    public Integer getTrue_goupille_grise() {
-        return true_goupille_grise;
+    public Integer getTrue_goupille_gris() {
+        return true_goupille_gris;
     }
 
-    public void setTrue_goupille_grise(Integer true_goupille_grise) {
-        this.true_goupille_grise = true_goupille_grise;
+    public void setTrue_goupille_gris(Integer true_goupille_gris) {
+        this.true_goupille_gris = true_goupille_gris;
     }
 
     public Integer getTrue_goupille_rouge() {
@@ -78,28 +78,28 @@ public class ActualData {
         this.true_couvercle_blanc = true_couvercle_blanc;
     }
 
-    public Integer getTrue_boite_noire() {
-        return true_boite_noire;
+    public Integer getTrue_boite_noir() {
+        return true_boite_noir;
     }
 
-    public void setTrue_boite_noire(Integer true_boite_noire) {
-        this.true_boite_noire = true_boite_noire;
+    public void setTrue_boite_noir(Integer true_boite_noir) {
+        this.true_boite_noir = true_boite_noir;
     }
 
-    public Integer getTrue_boite_blanche() {
-        return true_boite_blanche;
+    public Integer getTrue_boite_blanc() {
+        return true_boite_blanc;
     }
 
-    public void setTrue_boite_blanche(Integer true_boite_blanche) {
-        this.true_boite_blanche = true_boite_blanche;
+    public void setTrue_boite_blanc(Integer true_boite_blanc) {
+        this.true_boite_blanc = true_boite_blanc;
     }
 
-    public Integer getFalse_goupille_grise() {
-        return false_goupille_grise;
+    public Integer getFalse_goupille_gris() {
+        return false_goupille_gris;
     }
 
-    public void setFalse_goupille_grise(Integer false_goupille_grise) {
-        this.false_goupille_grise = false_goupille_grise;
+    public void setFalse_goupille_gris(Integer false_goupille_gris) {
+        this.false_goupille_gris = false_goupille_gris;
     }
 
     public Integer getFalse_goupille_rouge() {
@@ -126,19 +126,19 @@ public class ActualData {
         this.false_couvercle_blanc = false_couvercle_blanc;
     }
 
-    public Integer getFalse_boite_noire() {
-        return false_boite_noire;
+    public Integer getFalse_boite_noir() {
+        return false_boite_noir;
     }
 
-    public void setFalse_boite_noire(Integer false_boite_noire) {
-        this.false_boite_noire = false_boite_noire;
+    public void setFalse_boite_noir(Integer false_boite_noir) {
+        this.false_boite_noir = false_boite_noir;
     }
 
-    public Integer getFalse_boite_blanche() {
-        return false_boite_blanche;
+    public Integer getFalse_boite_blanc() {
+        return false_boite_blanc;
     }
 
-    public void setFalse_boite_blanche(Integer false_boite_blanche) {
-        this.false_boite_blanche = false_boite_blanche;
+    public void setFalse_boite_blanc(Integer false_boite_blanc) {
+        this.false_boite_blanc = false_boite_blanc;
     }
 }

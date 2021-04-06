@@ -23,12 +23,12 @@ import fr.hei.que_plume_app.entity.ActualData;
 
 public class AccueilFragment extends Fragment {
 
-    private TextView mTextViewBoiteNoire;
-    private TextView mTextViewBoiteBlanche;
+    private TextView mTextViewBoiteNoir;
+    private TextView mTextViewBoiteBlanc;
     private TextView mTextViewCouvercleNoir;
     private TextView mTextViewCouvercleBlanc;
     private TextView mTextViewGoupilleRouge;
-    private TextView mTextViewGoupilleGrise;
+    private TextView mTextViewGoupilleGris;
     private TextView mTextViewNbrErreurs;
     private TextView mTextViewNbrTraiter;
 
@@ -44,11 +44,11 @@ public class AccueilFragment extends Fragment {
 
         //Singleton.getInstance().getDateActual();
 
-        mTextViewBoiteNoire = (TextView) view.findViewById(R.id.textview_boite_noire);
-        mTextViewBoiteBlanche = (TextView) view.findViewById(R.id.textview_boite_blanche);
+        mTextViewBoiteNoir = (TextView) view.findViewById(R.id.textview_boite_noir);
+        mTextViewBoiteBlanc = (TextView) view.findViewById(R.id.textview_boite_blanc);
         mTextViewCouvercleBlanc = (TextView) view.findViewById(R.id.textview_couvercle_blanc);
         mTextViewCouvercleNoir = (TextView) view.findViewById(R.id.textview_couvercle_noir);
-        mTextViewGoupilleGrise = (TextView) view.findViewById(R.id.textview_goupille_grise);
+        mTextViewGoupilleGris = (TextView) view.findViewById(R.id.textview_goupille_gris);
         mTextViewGoupilleRouge = (TextView) view.findViewById(R.id.textview_goupille_rouge);
         mTextViewNbrTraiter = (TextView) view.findViewById(R.id.textview_nbr_pieces_24h);
         mTextViewNbrErreurs = (TextView) view.findViewById(R.id.textview_nbr_erreurs_24h);
@@ -80,8 +80,8 @@ public class AccueilFragment extends Fragment {
         hashMapActualData = Singleton.getInstance().getHashMapDataActuel();
         for (Map.Entry<String, Integer> entry : hashMapActualData.entrySet()) {
             System.out.println(entry.getKey() + " = " + entry.getValue());
-            if(entry.getKey().equals("true_goupille_grise")){
-                mTextViewGoupilleGrise.setText(entry.getValue().toString());
+            if(entry.getKey().equals("true_goupille_gris")){
+                mTextViewGoupilleGris.setText(entry.getValue().toString());
             }
             if(entry.getKey().equals("true_goupille_rouge")){
                 mTextViewGoupilleRouge.setText(entry.getValue().toString());
@@ -92,18 +92,20 @@ public class AccueilFragment extends Fragment {
             if(entry.getKey().equals("true_couvercle_blanc")){
                 mTextViewCouvercleBlanc.setText(entry.getValue().toString());
             }
-            if(entry.getKey().equals("true_boite_noire")){
-                mTextViewBoiteNoire.setText(entry.getValue().toString());
+            if(entry.getKey().equals("true_boite_noir")){
+                mTextViewBoiteNoir.setText(entry.getValue().toString());
             }
-            if(entry.getKey().equals("true_boite_blanche")){
-                mTextViewBoiteBlanche.setText(entry.getValue().toString());
+            if(entry.getKey().equals("true_boite_blanc")){
+                mTextViewBoiteBlanc.setText(entry.getValue().toString());
             }
-            if(entry.getKey().equals("false_goupille_grise")){
+            if(entry.getKey().equals("false_goupille_gris")){
                 if(entry.getValue() != 0){
-                    mTextViewGoupilleGrise.setText("Erreur");
+                    mTextViewGoupilleGris.setText("Erreur");
                 }
             }
             if(entry.getKey().equals("false_goupille_rouge")){
+                System.out.println("COUCOU");
+                System.out.println(entry.getValue());
                 if(entry.getValue() != 0){
                     mTextViewGoupilleRouge.setText("Erreur");
                 }
@@ -118,14 +120,14 @@ public class AccueilFragment extends Fragment {
                     mTextViewCouvercleBlanc.setText("Erreur");
                 }
             }
-            if(entry.getKey().equals("false_boite_noire")){
+            if(entry.getKey().equals("false_boite_noir")){
                 if(entry.getValue() != 0){
-                    mTextViewBoiteNoire.setText("Erreur");
+                    mTextViewBoiteNoir.setText("Erreur");
                 }
             }
-            if(entry.getKey().equals("false_boite_blanche")){
+            if(entry.getKey().equals("false_boite_blanc")){
                 if(entry.getValue() != 0){
-                    mTextViewBoiteBlanche.setText("Erreur");
+                    mTextViewBoiteBlanc.setText("Erreur");
                 }
             }
         }
