@@ -53,7 +53,7 @@ public class Singleton {
     private static final String TAG = "Singleton: ";
     private static Singleton singleton;
     private ArrayList<AjoutData> listeErreurs = new ArrayList<AjoutData>();
-    private ArrayList<AjoutData> listeTotal = new ArrayList<>();
+    private ArrayList<AjoutData> listeTotal = new ArrayList<AjoutData>();
     private ActualData dataActuel = new ActualData(); // Va contenir le nombre d'objet par bac.
     private DatabaseReference mDatabase;
 
@@ -185,7 +185,7 @@ public class Singleton {
 
     public void fetchFromDatabase(Context c, boolean showToasts){
 
-        DatabaseReference zonesRefErreurs = FirebaseDatabase.getInstance().getReference("erreurs");
+        DatabaseReference zonesRefErreurs = FirebaseDatabase.getInstance().getReference("traites");
         DatabaseReference zonesRefActuel = FirebaseDatabase.getInstance().getReference("resultat");
 
 
@@ -200,6 +200,7 @@ public class Singleton {
                     Log.i(TAG, ajoutData.toString());
                     String reel = ajoutData.getType_reel()+'-'+ajoutData.getCouleur_reelle();
                     String predis = ajoutData.getType_trouve()+'-'+ajoutData.getCouleur_trouvee();
+                    //Log.e(TAG, "fetch test: "+ajoutData.toString());
                     listeTotal.add(ajoutData); // Dans tous les cas on l'ajoute a la liste total
                     if(!reel.equals(predis))  // Si le reel != trouvé alors on l'ajoute dans la liste des erreurs.
                         listeErreurs.add(ajoutData);
@@ -241,7 +242,7 @@ public class Singleton {
             }
         });
 
-        /*if(showToasts) toast_db.show();
+        if(showToasts) toast_db.show();
         ArrayList<String> nameSubErreurs = new ArrayList<>();
 
         zonesRefErreurs.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -263,7 +264,7 @@ public class Singleton {
                 }
                 //if(showToasts) toast_db.show();
             }
-        });*/
+        });
     }
 
     public Map<String,Integer> getHashMapDataActuel() {
@@ -292,15 +293,17 @@ public class Singleton {
 
     public boolean isDateLessThanADayBefore(String strDate)
     {
+        Log.e(TAG, "ISDATELESS");
         Date oldDate = null;
         Date actualDate = getDateActual();
         try{
             oldDate = dateConverter(strDate);
         }catch (Exception e){
+            Log.e(TAG, "error converter");
             e.printStackTrace();
         }
         long hours = getDateDiff(oldDate, actualDate, TimeUnit.HOURS);
-        Log.e("DATE LE FRUIT: ",hours+"");
+        Log.e(TAG, "hours test: "+hours);
         if (hours <= 24) return true;
         else return false;
     }
@@ -318,6 +321,7 @@ public class Singleton {
     public int getNbPieceTraitee()
     {
         int sum = 0;
+        Log.e("PIECE TRAITE: ",listeTotal.size()+"");
         for(int i = 0; i<listeErreurs.size(); i++)
         {
             if(isDateLessThanADayBefore(listeTotal.get(i).getDate())) sum++;

@@ -66,8 +66,8 @@ public class AccueilFragment extends Fragment {
                 Log.w(TAG, "onCancelled", databaseError.toException());
             }
         });
-        mTextViewNbrErreurs.setText(Singleton.getInstance().getNbErreurs());
-        mTextViewNbrTraiter.setText(Singleton.getInstance().getNbPieceTraitee());
+        mTextViewNbrErreurs.setText(Singleton.getInstance().getNbErreurs()+"");
+        mTextViewNbrTraiter.setText(Singleton.getInstance().getNbPieceTraitee()+"");
 
         return view;
     }

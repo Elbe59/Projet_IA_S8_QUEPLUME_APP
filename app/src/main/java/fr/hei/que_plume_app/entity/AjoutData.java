@@ -9,18 +9,10 @@ public class AjoutData {
     private String type_reel;
     private String couleur_reelle;
     private String date;
-    private String id;
-    private String image;
+
 
     public AjoutData(){}
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public String getType_trouve() {
         return type_trouve;
@@ -62,16 +54,8 @@ public class AjoutData {
         this.date = date;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String toString(){
-        return (couleur_reelle +" - " + couleur_trouvee +" - " + date +" - " + id +" - " + image +" - " + type_reel +" - " + type_trouve);
+        return (couleur_reelle +" - " + couleur_trouvee +" - " + date  +" - " + type_reel +" - " + type_trouve);
     }
 
 }
