@@ -1,7 +1,6 @@
 package fr.hei.que_plume_app;
 
 import android.content.Context;
-import android.hardware.usb.UsbInterface;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.icu.util.TimeZone;
@@ -21,12 +20,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
+import java.util.Map;
 
-import fr.hei.que_plume_app.entity.ErreurIA;
+import fr.hei.que_plume_app.entity.ActualData;
+import fr.hei.que_plume_app.entity.AjoutData;
 
 public class Singleton {
 
@@ -35,7 +35,9 @@ public class Singleton {
 
     private static final String TAG = "Singleton: ";
     private static Singleton singleton;
-    private ArrayList<ErreurIA> listeErreurs = new ArrayList<ErreurIA>();
+    private ArrayList<AjoutData> listeErreurs = new ArrayList<AjoutData>();
+    private ArrayList<AjoutData> listeTotal = new ArrayList<>();
+    private ActualData dataActuel = new ActualData(); // Va contenir le nombre d'objet par bac.
     private DatabaseReference mDatabase;
 
     public Singleton()
@@ -142,50 +144,54 @@ public class Singleton {
         return rank;
     }
 
-    public ArrayList<ErreurIA> getErreurs() {
+    public ArrayList<AjoutData> getErreurs() {
         return listeErreurs;
     }
 
-    public ArrayList<ErreurIA> getListErreursInOrder(){  // Les erreurs sont stockés dans l'ordre de la plus ancienne a la plus récente. Il faut donc inverser la liste
-        ArrayList<ErreurIA> newListeErreursInOrder = getErreurs();
+    public ArrayList<AjoutData> getListErreursInOrder(){  // Les erreurs sont stockés dans l'ordre de la plus ancienne a la plus récente. Il faut donc inverser la liste
+        ArrayList<AjoutData> newListeErreursInOrder = getErreurs();
         Collections.reverse(newListeErreursInOrder);
         return newListeErreursInOrder;
     }
 
-    public void setErreurs(ArrayList<ErreurIA> erreur) {
+    public void setErreurs(ArrayList<AjoutData> erreur) {
         this.listeErreurs = erreur;
     }
 
-    public ErreurIA getErreurAtPosition(int position){
+    public AjoutData getErreurAtPosition(int position){
         return listeErreurs.get(position);
     }
 
-    public ErreurIA getErreurInOrderAtPosition(int position){
+    public AjoutData getErreurInOrderAtPosition(int position){
         return getListErreursInOrder().get(position);
     }
 
     public void fetchFromDatabase(Context c, boolean showToasts){
 
-        DatabaseReference zonesRef = FirebaseDatabase.getInstance().getReference("erreurs");
-        //DatabaseReference zone1Ref = zonesRef.child("Truc");
-        //DatabaseReference zone1NameRef = zone1Ref.child("couleur");
+        DatabaseReference zonesRefErreurs = FirebaseDatabase.getInstance().getReference("erreurs");
+        DatabaseReference zonesRefActuel = FirebaseDatabase.getInstance().getReference("resultat");
+
+
         Toast toast_db = Toast.makeText(c,"Trying to connect to the database...", Toast.LENGTH_SHORT);
 
-        zonesRef.addValueEventListener(new ValueEventListener() {
+        zonesRefErreurs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                listeErreurs = new ArrayList<ErreurIA>();
+                listeErreurs = new ArrayList<AjoutData>();
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    ErreurIA erreurIA = ds.getValue(ErreurIA.class);
-                    Log.i(TAG, erreurIA.toString());
-                    listeErreurs.add(erreurIA);
+                    AjoutData ajoutData = ds.getValue(AjoutData.class);
+                    Log.i(TAG, ajoutData.toString());
+                    String reel = ajoutData.getType_reel()+'-'+ajoutData.getCouleur_reelle();
+                    String predis = ajoutData.getType_trouve()+'-'+ajoutData.getCouleur_trouvee();
+                    listeTotal.add(ajoutData); // Dans tous les cas on l'ajoute a la liste total
+                    if(!reel.equals(predis))  // Si le reel != trouvé alors on l'ajoute dans la liste des erreurs.
+                        listeErreurs.add(ajoutData);
                     if(adapter_historique != null){
                         adapter_historique.notifyDataSetChanged();
                     }
                     if(adapter_statistique != null){
                         adapter_statistique.notifyDataSetChanged();
                     }
-
                 }
                 toast_db.setText("Database synced.");
             }
@@ -197,11 +203,31 @@ public class Singleton {
             }
         });
 
+        // Creer un objet
+        zonesRefActuel.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                dataActuel = new ActualData();
+                dataActuel = dataSnapshot.getValue(ActualData.class); // A modifier en fct de ce qui est écrit dans la database
+                Log.i(TAG, dataActuel.toString());
+                /*for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    dataActuel = ds.getValue(ActualData.class); // A modifier en fct de ce qui est écrit dans la database
+                    Log.i(TAG, dataActuel.toString());
+                }*/
+                toast_db.setText("Database synced.");
+            }
 
-        if(showToasts) toast_db.show();
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                toast_db.setText("Error: Couldn't connect to the database.\nPlease restart the app and check your internet connexion.");
+                Log.w(TAG, "onCancelled", databaseError.toException());
+            }
+        });
+
+        /*if(showToasts) toast_db.show();
         ArrayList<String> nameSubErreurs = new ArrayList<>();
 
-        zonesRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        zonesRefErreurs.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -221,7 +247,11 @@ public class Singleton {
 
                 //if(showToasts) toast_db.show();
             }
-        });
+        });*/
+    }
+
+    public Map<String,Integer> getHashMapDataActuel() {
+        return dataActuel.getMaHashMapDataActuel();
     }
 
     public void getDate(){
