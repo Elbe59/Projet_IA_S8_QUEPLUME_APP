@@ -242,7 +242,7 @@ public class Singleton {
             }
         });
 
-        if(showToasts) toast_db.show();
+        /*if(showToasts) toast_db.show();
         ArrayList<String> nameSubErreurs = new ArrayList<>();
 
         zonesRefErreurs.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -264,7 +264,7 @@ public class Singleton {
                 }
                 //if(showToasts) toast_db.show();
             }
-        });
+        });*/
     }
 
     public Map<String,Integer> getHashMapDataActuel() {

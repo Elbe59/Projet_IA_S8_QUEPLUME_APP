@@ -42,8 +42,6 @@ public class AccueilFragment extends Fragment {
         View view =  inflater.inflate(R.layout.activity_menu, container, false);
 
 
-        //Singleton.getInstance().getDateActual();
-
         mTextViewBoiteNoir = (TextView) view.findViewById(R.id.textview_boite_noir);
         mTextViewBoiteBlanc = (TextView) view.findViewById(R.id.textview_boite_blanc);
         mTextViewCouvercleBlanc = (TextView) view.findViewById(R.id.textview_couvercle_blanc);
@@ -53,8 +51,8 @@ public class AccueilFragment extends Fragment {
         mTextViewNbrTraiter = (TextView) view.findViewById(R.id.textview_nbr_pieces_24h);
         mTextViewNbrErreurs = (TextView) view.findViewById(R.id.textview_nbr_erreurs_24h);
 
-        DatabaseReference zonesRefActuel = FirebaseDatabase.getInstance().getReference("resultat");
-        zonesRefActuel.addValueEventListener(new ValueEventListener() {
+        DatabaseReference zonesRef = FirebaseDatabase.getInstance().getReference();
+        zonesRef.addValueEventListener(new ValueEventListener() {
 
             Toast toast_db = Toast.makeText(getContext(),"Trying to connect to the database...", Toast.LENGTH_SHORT);
             @Override
@@ -69,13 +67,18 @@ public class AccueilFragment extends Fragment {
                 Log.w(TAG, "onCancelled", databaseError.toException());
             }
         });
-        mTextViewNbrErreurs.setText(Singleton.getInstance().getNbErreurs()+"");
-        mTextViewNbrTraiter.setText(Singleton.getInstance().getNbPieceTraitee()+"");
+
 
         return view;
     }
 
+
     public void miseAJourTextView(){
+        // Met à jour le nombre de piéces traitées et le nbr d'erreur en 24h
+        mTextViewNbrErreurs.setText(Singleton.getInstance().getNbErreurs()+"");
+        mTextViewNbrTraiter.setText(Singleton.getInstance().getNbPieceTraitee()+"");
+
+        // Met à jour le taux de remplissage de chaque bac
         Map<String,Integer> hashMapActualData = new HashMap<>();
         hashMapActualData = Singleton.getInstance().getHashMapDataActuel();
         for (Map.Entry<String, Integer> entry : hashMapActualData.entrySet()) {
@@ -104,10 +107,8 @@ public class AccueilFragment extends Fragment {
                 }
             }
             if(entry.getKey().equals("false_goupille_rouge")){
-                System.out.println("COUCOU");
-                System.out.println(entry.getValue());
                 if(entry.getValue() != 0){
-                    mTextViewGoupilleRouge.setText("Erreur");
+                    mTextViewGoupilleRouge.setText("cc");
                 }
             }
             if(entry.getKey().equals("false_couvercle_noir")){
