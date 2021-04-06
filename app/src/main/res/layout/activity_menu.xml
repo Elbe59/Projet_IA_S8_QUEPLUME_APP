@@ -187,7 +187,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="299"
                     android:layout_weight="1">
                 </TextView>
             </LinearLayout>
@@ -213,8 +212,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="299">
+                    android:textAppearance="?android:attr/textAppearanceLarge">
                 </TextView>
             </LinearLayout>
 

@@ -48,6 +48,8 @@ public class AccueilFragment extends Fragment {
         mTextViewCouvercleNoir = (TextView) view.findViewById(R.id.textview_couvercle_noir);
         mTextViewGoupilleGrise = (TextView) view.findViewById(R.id.textview_goupille_grise);
         mTextViewGoupilleRouge = (TextView) view.findViewById(R.id.textview_goupille_rouge);
+        mTextViewNbrTraiter = (TextView) view.findViewById(R.id.textview_nbr_pieces_24h);
+        mTextViewNbrErreurs = (TextView) view.findViewById(R.id.textview_nbr_erreurs_24h);
 
         DatabaseReference zonesRefActuel = FirebaseDatabase.getInstance().getReference("resultat");
         zonesRefActuel.addValueEventListener(new ValueEventListener() {
@@ -64,9 +66,10 @@ public class AccueilFragment extends Fragment {
                 Log.w(TAG, "onCancelled", databaseError.toException());
             }
         });
+        mTextViewNbrErreurs.setText(Singleton.getInstance().getNbErreurs());
+        mTextViewNbrTraiter.setText(Singleton.getInstance().getNbPieceTraitee());
 
         return view;
-
     }
 
     public void miseAJourTextView(){

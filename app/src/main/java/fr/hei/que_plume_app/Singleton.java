@@ -320,7 +320,7 @@ public class Singleton {
         int sum = 0;
         for(int i = 0; i<listeErreurs.size(); i++)
         {
-            if(isDateLessThanADayBefore(listeErreurs.get(i).getDate())) sum++;
+            if(isDateLessThanADayBefore(listeTotal.get(i).getDate())) sum++;
         }
         return sum;
     }
