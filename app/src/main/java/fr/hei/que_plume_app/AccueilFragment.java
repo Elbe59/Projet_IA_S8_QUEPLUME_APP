@@ -1,6 +1,8 @@
 package fr.hei.que_plume_app;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +36,9 @@ public class AccueilFragment extends Fragment {
     private TextView mTextViewNbrErreurs;
     private TextView mTextViewNbrTraiter;
 
+    // (Nuance , R , G , B )
+    int rouge = 255*256*256*256+255*256*256+0*256+0;
+    int blanc = 255*256*256*256+255*256*256+255*256+255;
 
     private String TAG = "Menu_activity";
 
@@ -84,38 +91,50 @@ public class AccueilFragment extends Fragment {
 
         if(hashMapActualData.get("false_boite_noir") >= 1) {
             mTextViewBoiteNoir.setText("Erreur");
+            mTextViewBoiteNoir.setBackgroundColor(rouge);
         } else {
             mTextViewBoiteNoir.setText(hashMapActualData.get("true_boite_noir").toString());
+            mTextViewBoiteNoir.setBackgroundColor(blanc);
         }
 
         if(hashMapActualData.get("false_boite_blanc") >= 1) {
             mTextViewBoiteBlanc.setText("Erreur");
+            mTextViewBoiteBlanc.setBackgroundColor(rouge);
         } else {
             mTextViewBoiteBlanc.setText(hashMapActualData.get("true_boite_blanc").toString());
+            mTextViewBoiteBlanc.setBackgroundColor(blanc);
         }
 
         if(hashMapActualData.get("false_couvercle_noir") >= 1) {
             mTextViewCouvercleNoir.setText("Erreur");
+            mTextViewCouvercleNoir.setBackgroundColor(rouge);
         } else {
             mTextViewCouvercleNoir.setText(hashMapActualData.get("true_couvercle_noir").toString());
+            mTextViewCouvercleNoir.setBackgroundColor(blanc);
         }
 
         if(hashMapActualData.get("false_couvercle_blanc") >= 1) {
             mTextViewCouvercleBlanc.setText("Erreur");
+            mTextViewCouvercleBlanc.setBackgroundColor(rouge);
         } else {
             mTextViewCouvercleBlanc.setText(hashMapActualData.get("true_couvercle_blanc").toString());
+            mTextViewCouvercleBlanc.setBackgroundColor(blanc);
         }
 
         if(hashMapActualData.get("false_goupille_rouge") >= 1) {
             mTextViewGoupilleRouge.setText("Erreur");
+            mTextViewGoupilleRouge.setBackgroundColor(rouge);
         } else {
             mTextViewGoupilleRouge.setText(hashMapActualData.get("true_goupille_rouge").toString());
+            mTextViewGoupilleRouge.setBackgroundColor(blanc);
         }
 
         if(hashMapActualData.get("false_goupille_gris") >= 1) {
             mTextViewGoupilleGris.setText("Erreur");
+            mTextViewGoupilleGris.setBackgroundColor(rouge);
         } else {
             mTextViewGoupilleGris.setText(hashMapActualData.get("true_goupille_gris").toString());
+            mTextViewGoupilleGris.setBackgroundColor(blanc);
         }
     }
 }
