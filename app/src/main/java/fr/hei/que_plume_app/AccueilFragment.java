@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,10 +36,13 @@ public class AccueilFragment extends Fragment {
     private TextView mTextViewGoupilleGris;
     private TextView mTextViewNbrErreurs;
     private TextView mTextViewNbrTraiter;
+    private HashMap<TextView,String> listTextViewToDatabase = new HashMap<>(); // Contient une hashMap avec pour clé la textview et comme valeur le string dans la base
+
 
     // (Nuance , R , G , B )
     int rouge = 255*256*256*256+255*256*256+0*256+0;
     int blanc = 255*256*256*256+255*256*256+255*256+255;
+    int vert = Color.GREEN;
 
     private String TAG = "Menu_activity";
 
@@ -58,6 +62,16 @@ public class AccueilFragment extends Fragment {
         mTextViewNbrTraiter = (TextView) view.findViewById(R.id.textview_nbr_pieces_24h);
         mTextViewNbrErreurs = (TextView) view.findViewById(R.id.textview_nbr_erreurs_24h);
 
+        ArrayList<TextView> listTextView = new ArrayList<>();
+        listTextView.add(mTextViewBoiteNoir);listTextView.add(mTextViewBoiteBlanc);listTextView.add(mTextViewCouvercleBlanc);
+        listTextView.add(mTextViewCouvercleNoir);listTextView.add(mTextViewGoupilleRouge);listTextView.add(mTextViewGoupilleGris);
+
+        HashMap<TextView,String> listTextViewToDatabase = new HashMap<>();
+        listTextViewToDatabase.put(mTextViewBoiteNoir,"boite_noir");listTextViewToDatabase.put(mTextViewBoiteBlanc,"boite_blanc");
+        listTextViewToDatabase.put(mTextViewCouvercleNoir,"couvercle_noir");listTextViewToDatabase.put(mTextViewCouvercleBlanc,"couvercle_blanc");
+        listTextViewToDatabase.put(mTextViewGoupilleGris,"goupille_gris");listTextViewToDatabase.put(mTextViewGoupilleRouge,"goupille_rouge");
+
+
         DatabaseReference zonesRef = FirebaseDatabase.getInstance().getReference();
         zonesRef.addValueEventListener(new ValueEventListener() {
 
@@ -65,7 +79,7 @@ public class AccueilFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 toast_db.setText("Database synced");
-                miseAJourTextView();
+                miseAJourTextView(listTextViewToDatabase);
             }
 
             @Override
@@ -79,22 +93,92 @@ public class AccueilFragment extends Fragment {
         return view;
     }
 
+    public void onClickRemoveError(View view, TextView textView, String nameInDatabase) {
+        String falseDatabase = "false_";
+        //listTextViewToDatabase.get(textView)
+        //textView.setBackgroundColor(blanc);
+        DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
+        String childToModify = falseDatabase+nameInDatabase;
+        updateData.child(childToModify).setValue(0);
+        System.out.println(childToModify);
 
-    public void miseAJourTextView(){
+    }
+
+    public void onClickRemoveBac(View view, TextView textView, String nameInDatabase) {
+        String trueDatabase = "true_";
+        //textView.setBackgroundColor(blanc);
+        DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
+        String childToModify = trueDatabase+nameInDatabase;
+        updateData.child(childToModify).setValue(0);
+        System.out.println(childToModify);
+
+    }
+    public void miseAJourTextView(Map<TextView,String> listTextViewToDatabase){
+
         // Met à jour le nombre de piéces traitées et le nbr d'erreur en 24h
         mTextViewNbrErreurs.setText(Singleton.getInstance().getNbErreurs()+"");
         mTextViewNbrTraiter.setText(Singleton.getInstance().getNbPieceTraitee()+"");
+
 
         // Met à jour le taux de remplissage de chaque bac
         Map<String,Integer> hashMapActualData = new HashMap<>();
         hashMapActualData = Singleton.getInstance().getHashMapDataActuel();
 
+        for(Map.Entry<TextView, String> entry : listTextViewToDatabase.entrySet()) {
+            String falseDatabase = "false_";
+            String trueDatabase = "true_";
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+
+            if(hashMapActualData.get(falseDatabase+entry.getValue()) >= 1) {
+                entry.getKey().setText("Erreur");
+                entry.getKey().setBackgroundColor(rouge);
+                entry.getKey().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onClickRemoveError(view,entry.getKey(),entry.getValue());
+                    }
+                });
+            } else {
+                entry.getKey().setText(hashMapActualData.get(trueDatabase+entry.getValue()).toString());
+                if(hashMapActualData.get(trueDatabase+entry.getValue()) >= 3){
+                    entry.getKey().setBackgroundColor(vert);
+                }
+                else {
+                    entry.getKey().setBackgroundColor(blanc);
+                }
+                entry.getKey().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onClickRemoveBac(view,entry.getKey(),entry.getValue());
+                    }
+                });
+
+            }
+
+            // do what you have to do here
+            // In your case, another loop.
+        }
+        /*int colorRed = Color.RED;
+
         if(hashMapActualData.get("false_boite_noir") >= 1) {
             mTextViewBoiteNoir.setText("Erreur");
             mTextViewBoiteNoir.setBackgroundColor(rouge);
+            mTextViewBoiteNoir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickRemoveBac(view,mTextViewBoiteNoir);
+                }
+            });
         } else {
             mTextViewBoiteNoir.setText(hashMapActualData.get("true_boite_noir").toString());
             mTextViewBoiteNoir.setBackgroundColor(blanc);
+            mTextViewBoiteNoir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickRemoveError(view,mTextViewBoiteNoir);
+                }
+            });
+
         }
 
         if(hashMapActualData.get("false_boite_blanc") >= 1) {
@@ -135,6 +219,6 @@ public class AccueilFragment extends Fragment {
         } else {
             mTextViewGoupilleGris.setText(hashMapActualData.get("true_goupille_gris").toString());
             mTextViewGoupilleGris.setBackgroundColor(blanc);
-        }
+        }*/
     }
 }
