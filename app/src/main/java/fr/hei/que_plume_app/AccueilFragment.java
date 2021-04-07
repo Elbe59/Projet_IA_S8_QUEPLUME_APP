@@ -81,57 +81,41 @@ public class AccueilFragment extends Fragment {
         // Met à jour le taux de remplissage de chaque bac
         Map<String,Integer> hashMapActualData = new HashMap<>();
         hashMapActualData = Singleton.getInstance().getHashMapDataActuel();
-        for (Map.Entry<String, Integer> entry : hashMapActualData.entrySet()) {
-            System.out.println(entry.getKey() + " = " + entry.getValue());
-            if(entry.getKey().equals("true_goupille_gris")){
-                mTextViewGoupilleGris.setText(entry.getValue().toString());
-            }
-            if(entry.getKey().equals("true_goupille_rouge")){
-                mTextViewGoupilleRouge.setText(entry.getValue().toString());
-            }
-            if(entry.getKey().equals("true_couvercle_noir")){
-                mTextViewCouvercleNoir.setText(entry.getValue().toString());
-            }
-            if(entry.getKey().equals("true_couvercle_blanc")){
-                mTextViewCouvercleBlanc.setText(entry.getValue().toString());
-            }
-            if(entry.getKey().equals("true_boite_noir")){
-                mTextViewBoiteNoir.setText(entry.getValue().toString());
-            }
-            if(entry.getKey().equals("true_boite_blanc")){
-                mTextViewBoiteBlanc.setText(entry.getValue().toString());
-            }
-            if(entry.getKey().equals("false_goupille_gris")){
-                if(entry.getValue() != 0){
-                    mTextViewGoupilleGris.setText("Erreur");
-                }
-            }
-            if(entry.getKey().equals("false_goupille_rouge")){
-                if(entry.getValue() != 0){
-                    mTextViewGoupilleRouge.setText("cc");
-                }
-            }
-            if(entry.getKey().equals("false_couvercle_noir")){
-                if(entry.getValue() != 0){
-                    mTextViewCouvercleNoir.setText("Erreur");
-                }
-            }
-            if(entry.getKey().equals("false_couvercle_blanc")){
-                if(entry.getValue() != 0){
-                    mTextViewCouvercleBlanc.setText("Erreur");
-                }
-            }
-            if(entry.getKey().equals("false_boite_noir")){
-                if(entry.getValue() != 0){
-                    mTextViewBoiteNoir.setText("Erreur");
-                }
-            }
-            if(entry.getKey().equals("false_boite_blanc")){
-                if(entry.getValue() != 0){
-                    mTextViewBoiteBlanc.setText("Erreur");
-                }
-            }
+
+        if(hashMapActualData.get("false_boite_noir") >= 1) {
+            mTextViewBoiteNoir.setText("Erreur");
+        } else {
+            mTextViewBoiteNoir.setText(hashMapActualData.get("true_boite_noir").toString());
         }
 
+        if(hashMapActualData.get("false_boite_blanc") >= 1) {
+            mTextViewBoiteBlanc.setText("Erreur");
+        } else {
+            mTextViewBoiteBlanc.setText(hashMapActualData.get("true_boite_blanc").toString());
+        }
+
+        if(hashMapActualData.get("false_couvercle_noir") >= 1) {
+            mTextViewCouvercleNoir.setText("Erreur");
+        } else {
+            mTextViewCouvercleNoir.setText(hashMapActualData.get("true_couvercle_noir").toString());
+        }
+
+        if(hashMapActualData.get("false_couvercle_blanc") >= 1) {
+            mTextViewCouvercleBlanc.setText("Erreur");
+        } else {
+            mTextViewCouvercleBlanc.setText(hashMapActualData.get("true_couvercle_blanc").toString());
+        }
+
+        if(hashMapActualData.get("false_goupille_rouge") >= 1) {
+            mTextViewGoupilleRouge.setText("Erreur");
+        } else {
+            mTextViewGoupilleRouge.setText(hashMapActualData.get("true_goupille_rouge").toString());
+        }
+
+        if(hashMapActualData.get("false_goupille_gris") >= 1) {
+            mTextViewGoupilleGris.setText("Erreur");
+        } else {
+            mTextViewGoupilleGris.setText(hashMapActualData.get("true_goupille_gris").toString());
+        }
     }
 }
