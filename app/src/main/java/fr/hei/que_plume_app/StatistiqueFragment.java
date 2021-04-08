@@ -64,22 +64,22 @@ public class StatistiqueFragment extends Fragment {
 
         public class MyviewHolder extends RecyclerView.ViewHolder {
 
-            private TextView image_pred;
-            private TextView image_piece;
-            private TextView total_erreur;
+            private TextView mTextView_predictionIA;
+            private TextView mTextView_realite;
+            private TextView mTextView_total_erreur;
 
             public MyviewHolder(@NonNull View itemView) {
                 super(itemView);
-                image_pred = itemView.findViewById(R.id.textview_image_prediction);
-                image_piece = itemView.findViewById(R.id.textview_image_piece);
-                total_erreur = itemView.findViewById(R.id.textview_total_erreur);
+                mTextView_predictionIA = (TextView) itemView.findViewById(R.id.textview_statistique_prediction_ia);
+                mTextView_realite = (TextView) itemView.findViewById(R.id.textview_statistique_realite);
+                mTextView_total_erreur = (TextView) itemView.findViewById(R.id.textview_statistique_total_erreur);
             }
 
             public void setLine(ArrayList<String> line) {
                 //ArrayList<String> line = Singleton.getInstance().decode(Singleton.getInstance().getTotalErreur().get(pos));
-                image_pred.setText(line.get(1));
-                image_piece.setText(line.get(0));
-                total_erreur.setText(line.get(2));
+                mTextView_predictionIA.setText(line.get(1));
+                mTextView_realite.setText(line.get(0));
+                mTextView_total_erreur.setText(line.get(2));
             }
         }
     }

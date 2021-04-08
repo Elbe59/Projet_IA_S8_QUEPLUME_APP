@@ -165,13 +165,13 @@ public class Singleton {
         return listeErreurs;
     }
 
-    public ArrayList<AjoutData> getListErreursInOrder(){  // Les erreurs sont stockés dans l'ordre de la plus ancienne a la plus récente. Il faut donc inverser la liste
+    /*public ArrayList<AjoutData> getListErreursInOrder(){  // Les erreurs sont stockés dans l'ordre de la plus ancienne a la plus récente. Il faut donc inverser la liste
         ArrayList<AjoutData> newListeErreursInOrder = getErreurs();
         ArrayList<AjoutData> tampon = new ArrayList<>();
         tampon = newListeErreursInOrder;
         Collections.reverse(tampon);
         return tampon;
-    }
+    }*/
 
     public void setErreurs(ArrayList<AjoutData> erreur) {
         this.listeErreurs = erreur;

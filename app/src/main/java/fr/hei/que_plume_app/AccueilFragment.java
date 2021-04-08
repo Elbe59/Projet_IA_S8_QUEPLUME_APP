@@ -129,37 +129,39 @@ public class AccueilFragment extends Fragment {
         alert11.show();
     }
 
-    public void onClickRemoveBac(View view, TextView textView, String nameInDatabase) {
+    public void onClickRemoveBac(View view, TextView textView, String nameInDatabase, Integer valeurCorrespondante) {
 
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
-        builder1.setMessage("Voulez-vous vraiment vider ce bac ?");
-        builder1.setCancelable(true);
+        if(valeurCorrespondante != 0) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+            builder1.setMessage("Voulez-vous vraiment vider ce bac ?");
+            builder1.setCancelable(true);
 
-        builder1.setPositiveButton(
-                "OUI",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // Fonction de base
-                        String trueDatabase = "true_";
-                        //textView.setBackgroundColor(blanc);
-                        DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
-                        String childToModify = trueDatabase+nameInDatabase;
-                        updateData.child(childToModify).setValue(0);
-                        System.out.println(childToModify);
-                        //
-                        dialog.cancel();
-                    }
-                });
+            builder1.setPositiveButton(
+                    "OUI",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Fonction de base
+                            String trueDatabase = "true_";
+                            //textView.setBackgroundColor(blanc);
+                            DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
+                            String childToModify = trueDatabase + nameInDatabase;
+                            updateData.child(childToModify).setValue(0);
+                            System.out.println(childToModify);
+                            //
+                            dialog.cancel();
+                        }
+                    });
 
-        builder1.setNegativeButton(
-                "NON",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
+            builder1.setNegativeButton(
+                    "NON",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
     }
 
     public void miseAJourTextView(Map<TextView,String> listTextViewToDatabase){
@@ -176,6 +178,7 @@ public class AccueilFragment extends Fragment {
         for(Map.Entry<TextView, String> entry : listTextViewToDatabase.entrySet()) {
             String falseDatabase = "false_";
             String trueDatabase = "true_";
+            Integer valeurCorrespondante = hashMapActualData.get(trueDatabase+entry.getValue());
             System.out.println(entry.getKey() + " - " + entry.getValue());
 
             if(hashMapActualData.get(falseDatabase+entry.getValue()) >= 1) {
@@ -188,7 +191,7 @@ public class AccueilFragment extends Fragment {
                     }
                 });
             } else {
-                entry.getKey().setText(hashMapActualData.get(trueDatabase+entry.getValue()).toString());
+                entry.getKey().setText(valeurCorrespondante.toString());
                 if(hashMapActualData.get(trueDatabase+entry.getValue()) >= 3){
                     entry.getKey().setBackgroundColor(vert);
                 }
@@ -198,7 +201,7 @@ public class AccueilFragment extends Fragment {
                 entry.getKey().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        onClickRemoveBac(view,entry.getKey(),entry.getValue());
+                        onClickRemoveBac(view,entry.getKey(),entry.getValue(),valeurCorrespondante);
                     }
                 });
 

@@ -35,7 +35,7 @@
                     android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:text="Prédiction: "
+                    android:text="Prédiction IA: "
                     android:gravity="center"
                     android:textStyle="bold">
                 </TextView>

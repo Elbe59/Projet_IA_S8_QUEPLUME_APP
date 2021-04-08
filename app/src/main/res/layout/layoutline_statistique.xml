@@ -15,14 +15,7 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:gravity="center"
-            android:id="@+id/textview_image_piece">
-        </TextView>
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:id="@+id/textview_image_prediction">
+            android:id="@+id/textview_statistique_realite">
         </TextView>
         <TextView
             android:layout_height="match_parent"
@@ -30,7 +23,15 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:gravity="center"
-            android:id="@+id/textview_total_erreur">
+            android:id="@+id/textview_statistique_prediction_ia">
+        </TextView>
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/textview_statistique_total_erreur">
 
         </TextView>
 
