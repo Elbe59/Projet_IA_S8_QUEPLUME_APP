@@ -50,7 +50,7 @@ public class HistoriqueFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(MyviewHolder holder, int position) {
-            holder.setErreur(Singleton.getInstance().getErreurInOrderAtPosition(position));
+            holder.setErreur(Singleton.getInstance().getErreurAtPosition(position));
         }
 
         @Override

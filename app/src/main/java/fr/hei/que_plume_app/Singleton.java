@@ -167,8 +167,10 @@ public class Singleton {
 
     public ArrayList<AjoutData> getListErreursInOrder(){  // Les erreurs sont stockés dans l'ordre de la plus ancienne a la plus récente. Il faut donc inverser la liste
         ArrayList<AjoutData> newListeErreursInOrder = getErreurs();
-        Collections.reverse(newListeErreursInOrder);
-        return newListeErreursInOrder;
+        ArrayList<AjoutData> tampon = new ArrayList<>();
+        tampon = newListeErreursInOrder;
+        Collections.reverse(tampon);
+        return tampon;
     }
 
     public void setErreurs(ArrayList<AjoutData> erreur) {
@@ -179,9 +181,6 @@ public class Singleton {
         return listeErreurs.get(position);
     }
 
-    public AjoutData getErreurInOrderAtPosition(int position){
-        return getListErreursInOrder().get(position);
-    }
 
     public void fetchFromDatabase(Context c, boolean showToasts){
 
@@ -197,13 +196,14 @@ public class Singleton {
                 listeErreurs = new ArrayList<AjoutData>();
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
                     AjoutData ajoutData = ds.getValue(AjoutData.class);
-                    Log.i(TAG, ajoutData.toString());
                     String reel = ajoutData.getType_reel()+'-'+ajoutData.getCouleur_reelle();
                     String predis = ajoutData.getType_trouve()+'-'+ajoutData.getCouleur_trouvee();
                     //Log.e(TAG, "fetch test: "+ajoutData.toString());
                     listeTotal.add(ajoutData); // Dans tous les cas on l'ajoute a la liste total
-                    if(!reel.equals(predis))  // Si le reel != trouvé alors on l'ajoute dans la liste des erreurs.
+                    if(!reel.equals(predis)) {  // Si le reel != trouvé alors on l'ajoute dans la liste des erreurs.
                         listeErreurs.add(ajoutData);
+                        Log.i(TAG, ajoutData.toString());
+                    }
                     if(adapter_historique != null){
                         adapter_historique.notifyDataSetChanged();
                     }
@@ -211,6 +211,7 @@ public class Singleton {
                         adapter_statistique.notifyDataSetChanged();
                     }
                 }
+                Collections.reverse(listeErreurs);
                 toast_db.setText("Database synced.");
             }
 
@@ -228,10 +229,6 @@ public class Singleton {
                 dataActuel = new ActualData();
                 dataActuel = dataSnapshot.getValue(ActualData.class); // A modifier en fct de ce qui est écrit dans la database
                 Log.i(TAG, dataActuel.actualDataToString());
-                /*for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    dataActuel = ds.getValue(ActualData.class); // A modifier en fct de ce qui est écrit dans la database
-                    Log.i(TAG, dataActuel.toString());
-                }*/
                 toast_db.setText("Database synced.");
             }
 
@@ -293,7 +290,6 @@ public class Singleton {
 
     public boolean isDateLessThanADayBefore(String strDate)
     {
-        Log.e(TAG, "ISDATELESS");
         Date oldDate = null;
         Date actualDate = getDateActual();
         try{
@@ -303,7 +299,6 @@ public class Singleton {
             e.printStackTrace();
         }
         long hours = getDateDiff(oldDate, actualDate, TimeUnit.HOURS);
-        Log.e(TAG, "hours test: "+hours);
         if (hours <= 24) return true;
         else return false;
     }
