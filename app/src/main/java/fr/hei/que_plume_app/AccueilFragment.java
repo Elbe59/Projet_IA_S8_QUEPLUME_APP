@@ -154,71 +154,7 @@ public class AccueilFragment extends Fragment {
                 });
 
             }
-
-            // do what you have to do here
-            // In your case, another loop.
-        }
-        /*int colorRed = Color.RED;
-
-        if(hashMapActualData.get("false_boite_noir") >= 1) {
-            mTextViewBoiteNoir.setText("Erreur");
-            mTextViewBoiteNoir.setBackgroundColor(rouge);
-            mTextViewBoiteNoir.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onClickRemoveBac(view,mTextViewBoiteNoir);
-                }
-            });
-        } else {
-            mTextViewBoiteNoir.setText(hashMapActualData.get("true_boite_noir").toString());
-            mTextViewBoiteNoir.setBackgroundColor(blanc);
-            mTextViewBoiteNoir.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onClickRemoveError(view,mTextViewBoiteNoir);
-                }
-            });
-
         }
 
-        if(hashMapActualData.get("false_boite_blanc") >= 1) {
-            mTextViewBoiteBlanc.setText("Erreur");
-            mTextViewBoiteBlanc.setBackgroundColor(rouge);
-        } else {
-            mTextViewBoiteBlanc.setText(hashMapActualData.get("true_boite_blanc").toString());
-            mTextViewBoiteBlanc.setBackgroundColor(blanc);
-        }
-
-        if(hashMapActualData.get("false_couvercle_noir") >= 1) {
-            mTextViewCouvercleNoir.setText("Erreur");
-            mTextViewCouvercleNoir.setBackgroundColor(rouge);
-        } else {
-            mTextViewCouvercleNoir.setText(hashMapActualData.get("true_couvercle_noir").toString());
-            mTextViewCouvercleNoir.setBackgroundColor(blanc);
-        }
-
-        if(hashMapActualData.get("false_couvercle_blanc") >= 1) {
-            mTextViewCouvercleBlanc.setText("Erreur");
-            mTextViewCouvercleBlanc.setBackgroundColor(rouge);
-        } else {
-            mTextViewCouvercleBlanc.setText(hashMapActualData.get("true_couvercle_blanc").toString());
-            mTextViewCouvercleBlanc.setBackgroundColor(blanc);
-        }
-
-        if(hashMapActualData.get("false_goupille_rouge") >= 1) {
-            mTextViewGoupilleRouge.setText("Erreur");
-            mTextViewGoupilleRouge.setBackgroundColor(rouge);
-        } else {
-            mTextViewGoupilleRouge.setText(hashMapActualData.get("true_goupille_rouge").toString());
-            mTextViewGoupilleRouge.setBackgroundColor(blanc);
-        }
-
-        if(hashMapActualData.get("false_goupille_gris") >= 1) {
-            mTextViewGoupilleGris.setText("Erreur");
-            mTextViewGoupilleGris.setBackgroundColor(rouge);
-        } else {
-            mTextViewGoupilleGris.setText(hashMapActualData.get("true_goupille_gris").toString());
-            mTextViewGoupilleGris.setBackgroundColor(blanc);
-        }*/
     }
 }
