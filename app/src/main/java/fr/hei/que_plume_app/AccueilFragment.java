@@ -1,5 +1,6 @@
 package fr.hei.que_plume_app;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.style.BackgroundColorSpan;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.database.DataSnapshot;
@@ -94,25 +96,72 @@ public class AccueilFragment extends Fragment {
     }
 
     public void onClickRemoveError(View view, TextView textView, String nameInDatabase) {
-        String falseDatabase = "false_";
-        //listTextViewToDatabase.get(textView)
-        //textView.setBackgroundColor(blanc);
-        DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
-        String childToModify = falseDatabase+nameInDatabase;
-        updateData.child(childToModify).setValue(0);
-        System.out.println(childToModify);
 
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+        builder1.setMessage("Avez-vous vérifié l'erreur ?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OUI",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Fonction de base
+                        String falseDatabase = "false_";
+                        //listTextViewToDatabase.get(textView)
+                        //textView.setBackgroundColor(blanc);
+                        DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
+                        String childToModify = falseDatabase+nameInDatabase;
+                        updateData.child(childToModify).setValue(0);
+                        System.out.println(childToModify);
+                        //
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "NON",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     public void onClickRemoveBac(View view, TextView textView, String nameInDatabase) {
-        String trueDatabase = "true_";
-        //textView.setBackgroundColor(blanc);
-        DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
-        String childToModify = trueDatabase+nameInDatabase;
-        updateData.child(childToModify).setValue(0);
-        System.out.println(childToModify);
 
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
+        builder1.setMessage("Voulez-vous vraiment vider ce bac ?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OUI",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Fonction de base
+                        String trueDatabase = "true_";
+                        //textView.setBackgroundColor(blanc);
+                        DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
+                        String childToModify = trueDatabase+nameInDatabase;
+                        updateData.child(childToModify).setValue(0);
+                        System.out.println(childToModify);
+                        //
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "NON",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
+
     public void miseAJourTextView(Map<TextView,String> listTextViewToDatabase){
 
         // Met à jour le nombre de piéces traitées et le nbr d'erreur en 24h
