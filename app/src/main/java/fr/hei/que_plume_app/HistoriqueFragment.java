@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import fr.hei.que_plume_app.entity.AjoutData;
 
 public class HistoriqueFragment extends Fragment {
@@ -50,7 +54,11 @@ public class HistoriqueFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(MyviewHolder holder, int position) {
-            holder.setErreur(Singleton.getInstance().getErreurAtPosition(position));
+            try {
+                holder.setErreur(Singleton.getInstance().getErreurAtPosition(position));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -71,15 +79,28 @@ public class HistoriqueFragment extends Fragment {
                 mTextViewDate = (TextView) itemView.findViewById(R.id.textview_historique_dateheure_erreur);
             }
 
-            public void setErreur(AjoutData ajoutData) {
+            public void setErreur(AjoutData ajoutData) throws ParseException {
                 String prediction = ajoutData.getType_trouve() + " - " + ajoutData.getCouleur_trouvee();
                 String realite = ajoutData.getType_reel() + " - " + ajoutData.getCouleur_reelle();
-                String date = ajoutData.getDate();
+                String date = dateConverter(ajoutData.getDate());
                 mTextViewPrediction.setText(prediction);
                 mTextViewRealite.setText(realite);
                 mTextViewDate.setText(date);
             }
         }
+    }
+    public String dateConverter(String dateInitial) throws ParseException {
+        final String OLD_FORMAT = "yyyy-MM-dd HH:mm:sssssssss";
+        final String NEW_FORMAT = "dd/MM HH:mm";
+
+        String oldDateString = dateInitial;
+        String newDateString;
+
+        SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+        Date d = sdf.parse(oldDateString);
+        sdf.applyPattern(NEW_FORMAT);
+        newDateString = sdf.format(d);
+        return newDateString;
     }
 
 

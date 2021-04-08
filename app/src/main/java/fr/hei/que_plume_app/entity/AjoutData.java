@@ -1,6 +1,9 @@
 package fr.hei.que_plume_app.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class AjoutData {
 
@@ -50,12 +53,13 @@ public class AjoutData {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date) throws ParseException {
         this.date = date;
     }
 
     public String toString(){
         return (couleur_reelle +" - " + couleur_trouvee +" - " + date  +" - " + type_reel +" - " + type_trouve);
     }
+
 
 }
