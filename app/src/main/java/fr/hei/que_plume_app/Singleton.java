@@ -57,6 +57,13 @@ public class Singleton {
     private ActualData dataActuel = new ActualData(); // Va contenir le nombre d'objet par bac.
     private DatabaseReference mDatabase;
 
+    private Integer placeInBox_Couvercle_Noir = 3;
+    private Integer placeInBox_Couvercle_Blanc = 3;
+    private Integer placeInBox_Boite_Blanc = 3;
+    private Integer placeInBox_Boite_Noir = 3;
+    private Integer placeInBox_Goupille_Gris = 3;
+    private Integer placeInBox_Goupille_Rouge = 3;
+
     public Singleton()
     { }
 
@@ -387,5 +394,19 @@ public class Singleton {
             }
         }
     }*/
+
+    public int getPlaceInBox_Couvercle_Noir () { return placeInBox_Couvercle_Noir; }
+    public int getPlaceInBox_Couvercle_Blanc () { return placeInBox_Couvercle_Blanc; }
+    public int getPlaceInBox_Boite_Blanc () { return placeInBox_Boite_Blanc; }
+    public int getPlaceInBox_Boite_Noir () { return placeInBox_Boite_Noir; }
+    public int getPlaceInBox_Goupille_Gris () { return placeInBox_Goupille_Gris; }
+    public int getPlaceInBox_Goupille_Rouge () { return placeInBox_Goupille_Rouge; }
+
+    public void setPlaceInBox_Couvercle_Noir (int nombre) { placeInBox_Couvercle_Noir = nombre; }
+    public void setPlaceInBox_Couvercle_Blanc (int nombre) { placeInBox_Couvercle_Blanc = nombre; }
+    public void setPlaceInBox_Boite_Blanc (int nombre) { placeInBox_Boite_Blanc = nombre; }
+    public void setPlaceInBox_Boite_Noir (int nombre) { placeInBox_Boite_Noir = nombre; }
+    public void setPlaceInBox_Goupille_Gris (int nombre) { placeInBox_Goupille_Gris = nombre; }
+    public void setPlaceInBox_Goupille_Rouge (int nombre) { placeInBox_Goupille_Rouge = nombre; }
 }
 
