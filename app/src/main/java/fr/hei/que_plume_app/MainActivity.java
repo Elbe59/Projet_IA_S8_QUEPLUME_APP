@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         //nb_erreur = findViewById(R.id.textview_nbr_erreurs_24h);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_menu_principal, R.id.nav_menu_historique, R.id.nav_menu_statistiques)
+                R.id.nav_menu_principal, R.id.nav_menu_historique, R.id.nav_menu_statistiques, R.id.nav_menu_para)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

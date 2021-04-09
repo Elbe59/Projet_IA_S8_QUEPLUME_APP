@@ -22,4 +22,10 @@
         android:name="fr.hei.que_plume_app.StatistiqueFragment"
         android:label="@string/menu_statistiques"
         tools:layout="@layout/activity_statistique" />
+
+    <fragment
+        android:id="@+id/nav_menu_para"
+        android:name="fr.hei.que_plume_app.ParaFragment"
+        android:label="@string/menu_parameter"
+        tools:layout="@layout/layout_parameter" />
 </navigation>
