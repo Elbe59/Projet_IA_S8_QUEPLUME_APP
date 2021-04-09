@@ -73,7 +73,7 @@ public class Singleton {
     {
         ArrayList<String> res = new ArrayList<String>();
         for (int i = 0; i < this.listeErreurs.size() ; i++) {
-            res.add(this.listeErreurs.get(i).getType_trouve()+"_"+this.listeErreurs.get(i).getCouleur_trouvee());
+            res.add(this.listeErreurs.get(i).getType_trouve()+" - "+this.listeErreurs.get(i).getCouleur_trouvee());
         }
         return res;
     }
@@ -86,7 +86,7 @@ public class Singleton {
     {
         ArrayList<String> res = new ArrayList<String>();
         for (int i = 0; i < this.listeErreurs.size() ; i++) {
-            res.add(this.listeErreurs.get(i).getType_reel()+"_"+this.listeErreurs.get(i).getCouleur_reelle());
+            res.add(this.listeErreurs.get(i).getType_reel()+" - "+this.listeErreurs.get(i).getCouleur_reelle());
         }
         return res;
     }
@@ -171,14 +171,6 @@ public class Singleton {
         return listeErreurs;
     }
 
-    /*public ArrayList<AjoutData> getListErreursInOrder(){  // Les erreurs sont stockés dans l'ordre de la plus ancienne a la plus récente. Il faut donc inverser la liste
-        ArrayList<AjoutData> newListeErreursInOrder = getErreurs();
-        ArrayList<AjoutData> tampon = new ArrayList<>();
-        tampon = newListeErreursInOrder;
-        Collections.reverse(tampon);
-        return tampon;
-    }*/
-
     public void setErreurs(ArrayList<AjoutData> erreur) {
         this.listeErreurs = erreur;
     }
@@ -200,6 +192,7 @@ public class Singleton {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listeErreurs = new ArrayList<AjoutData>();
+                listeTotal = new ArrayList<AjoutData>();
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
                     AjoutData ajoutData = ds.getValue(AjoutData.class);
                     String reel = ajoutData.getType_reel()+'-'+ajoutData.getCouleur_reelle();
@@ -318,7 +311,7 @@ public class Singleton {
     {
         int sum = 0;
         Log.e("PIECE TRAITE: ",listeTotal.size()+"");
-        for(int i = 0; i<listeErreurs.size(); i++)
+        for(int i = 0; i<listeTotal.size(); i++)
         {
             if(isDateLessThanADayBefore(listeTotal.get(i).getDate())) sum++;
         }
