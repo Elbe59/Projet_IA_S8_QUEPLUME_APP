@@ -71,7 +71,7 @@ public class Singleton {
     {
         ArrayList<String> res = new ArrayList<String>();
         for (int i = 0; i < this.listeErreurs.size() ; i++) {
-            res.add(this.listeErreurs.get(i).getType_trouve()+"_"+this.listeErreurs.get(i).getCouleur_trouvee());
+            res.add(this.listeErreurs.get(i).getType_trouve()+"-"+this.listeErreurs.get(i).getCouleur_trouvee());
         }
         return res;
     }
@@ -80,7 +80,7 @@ public class Singleton {
     {
         ArrayList<String> res = new ArrayList<String>();
         for (int i = 0; i < this.listeErreurs.size() ; i++) {
-            res.add(this.listeErreurs.get(i).getType_reel()+"_"+this.listeErreurs.get(i).getCouleur_reelle());
+            res.add(this.listeErreurs.get(i).getType_reel()+"-"+this.listeErreurs.get(i).getCouleur_reelle());
         }
         return res;
     }
@@ -323,69 +323,5 @@ public class Singleton {
         }
         return sum;
     }
-
-    /*public ArrayList<Integer> getIntDate(String str)
-    {
-        ArrayList<Integer> intDate = new ArrayList<Integer>();
-        if (str.length()<19) return null;
-        else{
-            intDate.add(Integer.parseInt(str.charAt(0)+""+str.charAt(1)+""+str.charAt(2)+""+str.charAt(3)+""));
-            intDate.add(Integer.parseInt(str.charAt(5)+""+str.charAt(6)+""));
-            intDate.add(Integer.parseInt(str.charAt(8)+""+str.charAt(9)+""));
-            intDate.add(Integer.parseInt(str.charAt(11)+""+str.charAt(12)+""));
-            intDate.add(Integer.parseInt(str.charAt(14)+""+str.charAt(15)+""));
-            intDate.add(Integer.parseInt(str.charAt(17)+""+str.charAt(18)+""));
-            return intDate;
-        }
-    }
-
-    public boolean isDateMoreThanADayBefore(String past)
-    {
-        boolean inThePast = false;
-        ArrayList<Integer> pastDate = getIntDate(past);
-        ArrayList<Integer> actualDate = getIntDate(getDateActual());
-        if (pastDate.get(0) != actualDate.get(0) && !(pastDate.get(2) == 12 && actualDate.get(2) == 1 && actualDate.get(3)<pastDate.get(3))) inThePast = true;
-        else{
-
-        }
-    }
-
-    public ArrayList<Integer> nextDay(int month, int day)
-    {
-        int nextMonth, nextDay;
-        if(month == 1 || month == 3 || month == 5 ||month == 7 || month == 8 || month == 10 || month == 12)
-        {
-            if (day == 31) {
-                nextMonth = month++;
-                nextDay = 1;
-            }
-            else {
-                nextDay = day++;
-                nextMonth = month;
-            }
-        }
-        else if(month == 4 || month == 6 || month == 9 ||month == 11)
-        {
-            if (day == 30) {
-                nextMonth = month++;
-                nextDay = 1;
-            }
-            else {
-                nextDay = day++;
-                nextMonth = month;
-            }
-        }
-        else
-        {
-            if (day == 30) {
-                nextMonth = month++;
-                nextDay = 1;
-            }
-            else {
-                nextDay = day++;
-                nextMonth = month;
-            }
-        }
-    }*/
 }
 
