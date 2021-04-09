@@ -46,22 +46,22 @@
 
                     <ImageView
                         android:src="@drawable/boite_noire"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_gravity="center"
                         />
 
                     <ImageView
                         android:src="@drawable/couvercle_noir"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_gravity="center"
                         />
 
                     <ImageView
                         android:src="@drawable/goupille_rouge"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_gravity="center"
                         />
                 </TableRow>
@@ -203,22 +203,22 @@
 
                     <ImageView
                         android:src="@drawable/boite_blanche"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_gravity="center"
                         />
 
                     <ImageView
                         android:src="@drawable/couvercle_blanc"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_gravity="center"
                         />
 
                     <ImageView
                         android:src="@drawable/goupille_grise"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_gravity="center"
                         />
                 </TableRow>
