@@ -23,12 +23,13 @@ public class StatistiqueFragment extends Fragment {
 
     private RecyclerView.LayoutManager layoutManager;
 
-    //private ArrayList<String> listErreur;
-
     public StatistiqueFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        Log.d(TAG, "Création de la fenêtre");
+
         View view = inflater.inflate(R.layout.activity_statistique, container, false);
         recyclerView = view.findViewById(R.id.recyclerView_statistique);
 
@@ -39,7 +40,6 @@ public class StatistiqueFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         Singleton.getInstance().adapter_statistique = new StatistiqueAdapter();
         recyclerView.setAdapter(Singleton.getInstance().adapter_statistique);
-        //listErreur = Singleton.getInstance().getTotalErreur();
         return view;
     }
 
@@ -76,10 +76,11 @@ public class StatistiqueFragment extends Fragment {
             }
 
             public void setLine(ArrayList<String> line) {
-                //ArrayList<String> line = Singleton.getInstance().decode(Singleton.getInstance().getTotalErreur().get(pos));
                 mTextView_predictionIA.setText(line.get(1));
                 mTextView_realite.setText(line.get(0));
                 mTextView_total_erreur.setText(line.get(2));
+
+                Log.d(TAG, "Chargement ligne: "+line.toString());
             }
         }
     }

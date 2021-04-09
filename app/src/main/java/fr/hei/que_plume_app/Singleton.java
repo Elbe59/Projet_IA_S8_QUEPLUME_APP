@@ -64,6 +64,7 @@ public class Singleton {
 
     public static Singleton getInstance()
     {
+        Log.d(TAG, "instance du Singleton");
         if (singleton == null)
             singleton = new Singleton();
         return singleton;
@@ -79,6 +80,7 @@ public class Singleton {
     }
 
     public NbrMaxObjetParBac getNbrMaxObj(){
+        Log.d(TAG, "quantité dans les bacs récupéré");
         return this.maxObjetParBac;
     }
 
@@ -109,8 +111,6 @@ public class Singleton {
                 }
             }
             if (exists && rank != -1){
-                Log.d("SINGLETON", "SINGLETON: rank "+rank);
-                Log.d("SINGLETON", "SINGLETON: type pred "+typePred.get(rank)+" type reel "+typeReel.get(rank));
                 nbErreurs.set(rank, (nbErreurs.get(rank))+1);
 
             }else
@@ -126,9 +126,7 @@ public class Singleton {
             res.add(typeFinalReel.get(imax) + ":" + typeFinalPred.get(imax) + ":" + nbErreurs.get(imax));
             nbErreurs.set(imax, 0);
         }
-        Log.d("SINGLETON ","SINGLETON: taille erreurs "+nbErreurs.size()+" Pred "+typeFinalPred.size()+" Reel "+typeFinalReel.size());
-        Log.d("SINGLETON", "SINGLETON: res "+res);
-        Log.d("SINGLETON", "SINGLETON: taille res "+res.size());
+        Log.d(TAG,"Statistiques des erreurs: "+res);
         return res;
     }
 
@@ -146,7 +144,6 @@ public class Singleton {
             }
         }
         res.add(actuel);
-        Log.d("STAT", "STATS: res "+res);
         return res;
     }
 
@@ -168,6 +165,7 @@ public class Singleton {
     }
 
     public ArrayList<AjoutData> getErreurs() {
+        Log.d(TAG,"Liste d'erreurs récupérée");
         return listeErreurs;
     }
 
@@ -181,6 +179,8 @@ public class Singleton {
 
 
     public void fetchFromDatabase(Context c, boolean showToasts){
+
+        Log.i(TAG, "Fetch from database");
 
         DatabaseReference zonesRefErreurs = FirebaseDatabase.getInstance().getReference("traites");
         DatabaseReference zonesRefActuel = FirebaseDatabase.getInstance().getReference("resultat");
@@ -305,7 +305,9 @@ public class Singleton {
             if(isDateLessThanADayBefore(listeErreurs.get(i).getDate())) sum++;
         }
         int div = getNbPieceTraitee();
+        Log.d(TAG, "nb d'erreur en 24h: "+sum);
         float res = (float) sum/div;
+        Log.d(TAG,"Taux d'erreur en 24h: "+res);
         return res*100;
     }
 
@@ -317,6 +319,7 @@ public class Singleton {
         {
             if(isDateLessThanADayBefore(listeTotal.get(i).getDate())) sum++;
         }
+        Log.d(TAG,"nb pièces traitées en 24h: "+sum);
         return sum;
     }
 

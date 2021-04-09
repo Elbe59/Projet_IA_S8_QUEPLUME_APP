@@ -1,6 +1,7 @@
 package fr.hei.que_plume_app;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,9 @@ public class HistoriqueFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        Log.i(TAG, "Création fenêtre");
+
         View view =  inflater.inflate(R.layout.activity_historique, container, false);
         recyclerView = view.findViewById(R.id.recyclerView_historique);
 
@@ -83,6 +87,9 @@ public class HistoriqueFragment extends Fragment {
                 String prediction = ajoutData.getType_trouve() + " - " + ajoutData.getCouleur_trouvee();
                 String realite = ajoutData.getType_reel() + " - " + ajoutData.getCouleur_reelle();
                 String date = dateConverter(ajoutData.getDate());
+
+                Log.d(TAG, "remplissage ligne, pred: "+prediction+", reel: "+realite);
+
                 mTextViewPrediction.setText(prediction);
                 mTextViewRealite.setText(realite);
                 mTextViewDate.setText(date);

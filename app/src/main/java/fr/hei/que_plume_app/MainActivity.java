@@ -30,12 +30,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String TAG = "Main_Act";
+
     private AppBarConfiguration mAppBarConfiguration;
-    //private TextView nb_piece_traite;
-    //private TextView nb_erreur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.d(TAG, "création du menu");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -43,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
-        //nb_piece_traite = findViewById(R.id.textview_nbr_pieces_24h);
-        //nb_erreur = findViewById(R.id.textview_nbr_erreurs_24h);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_menu_principal, R.id.nav_menu_historique, R.id.nav_menu_statistiques, R.id.nav_menu_para)
@@ -57,9 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().goOnline();
         Singleton.getInstance().fetchFromDatabase(this, true);
-        //Singleton.getInstance().getDateActual();
-        //nb_piece_traite.setText(Singleton.getInstance().getNbPieceTraitee()+"");
-        //nb_erreur.setText(Singleton.getInstance().getNbErreurs()+"");
     }
 
     @Override
