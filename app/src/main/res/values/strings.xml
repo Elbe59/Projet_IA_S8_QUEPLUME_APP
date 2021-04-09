@@ -8,5 +8,5 @@
     <string name="menu_principal">Tableau de bord</string>
     <string name="menu_historique">Historique des erreurs</string>
     <string name="menu_statistiques">Statistiques des erreurs</string>
-    <string name="menu_parameter">Parametres</string>
+    <string name="menu_parameter">Paramètres</string>
 </resources>
