@@ -13,6 +13,7 @@
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:textColor="#000000"
             android:textStyle="bold"
             android:gravity="center"
             android:id="@+id/textview_statistique_realite">
@@ -21,6 +22,7 @@
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:textColor="#000000"
             android:textStyle="bold"
             android:gravity="center"
             android:id="@+id/textview_statistique_prediction_ia">
@@ -29,10 +31,10 @@
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:textColor="#000000"
             android:textStyle="bold"
             android:gravity="center"
             android:id="@+id/textview_statistique_total_erreur">
-
         </TextView>
 
     </LinearLayout>
