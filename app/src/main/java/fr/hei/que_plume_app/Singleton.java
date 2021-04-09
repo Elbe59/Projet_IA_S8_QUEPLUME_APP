@@ -78,6 +78,10 @@ public class Singleton {
         return res;
     }
 
+    public NbrMaxObjetParBac getNbrMaxObj(){
+        return this.maxObjetParBac;
+    }
+
     public ArrayList<String> getTypeReel()
     {
         ArrayList<String> res = new ArrayList<String>();

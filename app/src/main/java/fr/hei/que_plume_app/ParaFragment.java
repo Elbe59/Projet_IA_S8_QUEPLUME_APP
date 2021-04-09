@@ -73,65 +73,63 @@ public class ParaFragment extends Fragment {
 
         Bboite_blanc_plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //updateDB("boite_blanc",1,Singleton.getInstance().getMa);
+                updateDB("boite_blanc",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_blanc());
             }
         });
         Bboite_noir_plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                updateDB("boite_noir",1,Singleton.getInstance().getPlaceInBox_Boite_Noir());
+                updateDB("boite_noir",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_noir());
             }
         });
         Bcouvercle_blanc_plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                updateDB("couvercle_blanc",1,Singleton.getInstance().getPlaceInBox_Couvercle_Blanc());
+                updateDB("couvercle_blanc",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_blanc());
             }
         });
         Bcouvercle_noir_plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Singleton.getInstance().setPlaceInBox_Couvercle_Noir(Singleton.getInstance().getPlaceInBox_Couvercle_Noir()+1);
+                updateDB("couvercle_noir",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_noir());
             }
         });
         Bgoupille_gris_plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Singleton.getInstance().setPlaceInBox_Goupille_Gris(Singleton.getInstance().getPlaceInBox_Goupille_Gris()+1);
+                updateDB("goupille_gris",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_gris());
             }
         });
         Bgoupille_rouge_plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Singleton.getInstance().setPlaceInBox_Goupille_Rouge(Singleton.getInstance().getPlaceInBox_Goupille_Rouge()+1);
+                updateDB("goupille_rouge",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_rouge());;
             }
         });
 
         Bboite_blanc_minus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                Singleton.getInstance().setPlaceInBox_Boite_Blanc(Singleton.getInstance().getPlaceInBox_Boite_Blanc()-1);
-                //MAJplaces();
+                updateDB("boite_blanc",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_blanc());
             }
         });
         Bboite_noir_minus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Singleton.getInstance().setPlaceInBox_Boite_Noir(Singleton.getInstance().getPlaceInBox_Boite_Noir()-1);
+                updateDB("boite_noir",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_noir());
             }
         });
         Bcouvercle_blanc_minus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Singleton.getInstance().setPlaceInBox_Couvercle_Blanc(Singleton.getInstance().getPlaceInBox_Couvercle_Blanc()-1);
+                updateDB("couvercle_blanc",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_blanc());
             }
         });
         Bcouvercle_noir_minus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Singleton.getInstance().setPlaceInBox_Couvercle_Noir(Singleton.getInstance().getPlaceInBox_Couvercle_Noir()-1);
+                updateDB("couvercle_noir",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_noir());
             }
         });
         Bgoupille_gris_minus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Singleton.getInstance().setPlaceInBox_Goupille_Gris(Singleton.getInstance().getPlaceInBox_Goupille_Gris()-1);
+                updateDB("goupille_gris",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_gris());
             }
         });
         Bgoupille_rouge_minus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Singleton.getInstance().setPlaceInBox_Goupille_Rouge(Singleton.getInstance().getPlaceInBox_Goupille_Rouge()-1);
+                updateDB("goupille_rouge",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_rouge());
             }
         });
 
@@ -154,12 +152,12 @@ public class ParaFragment extends Fragment {
     }
 
     public void MAJtexts(){
-        Tboite_blanc.setText(""+Singleton.getInstance().getPlaceInBox_Boite_Blanc());
-        Tboite_noir.setText(""+Singleton.getInstance().getPlaceInBox_Boite_Noir());
-        Tcouvercle_blanc.setText(""+Singleton.getInstance().getPlaceInBox_Couvercle_Blanc());
-        Tcouvercle_noir.setText(""+Singleton.getInstance().getPlaceInBox_Couvercle_Noir());
-        Tgoupille_gris.setText(""+Singleton.getInstance().getPlaceInBox_Goupille_Gris());
-        Tgoupille_rouge.setText(""+Singleton.getInstance().getPlaceInBox_Goupille_Rouge());
+        Tboite_blanc.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_blanc());
+        Tboite_noir.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_noir());
+        Tcouvercle_blanc.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_blanc());
+        Tcouvercle_noir.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_noir());
+        Tgoupille_gris.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_gris());
+        Tgoupille_rouge.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_rouge());
     }
 
     public void updateDB(String type, int ope, int lastValue)
