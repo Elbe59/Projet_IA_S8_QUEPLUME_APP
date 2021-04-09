@@ -157,7 +157,9 @@ public class AccueilFragment extends Fragment {
     public void miseAJourTextView(Map<TextView,String> listTextViewToDatabase){
 
         // Met à jour le nombre de piéces traitées et le nbr d'erreur en 24h
-        mTextViewNbrErreurs.setText(Singleton.getInstance().getNbErreurs()+"");
+        String percentErreur = Singleton.getInstance().getNbErreurs()+"";
+        percentErreur = percentErreur.charAt(0)+""+percentErreur.charAt(1)+"%";
+        mTextViewNbrErreurs.setText(percentErreur);
         mTextViewNbrTraiter.setText(Singleton.getInstance().getNbPieceTraitee()+"");
 
 

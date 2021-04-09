@@ -297,14 +297,16 @@ public class Singleton {
         else return false;
     }
 
-    public int getNbErreurs()
+    public float getNbErreurs()
     {
         int sum = 0;
         for(int i = 0; i<listeErreurs.size(); i++)
         {
             if(isDateLessThanADayBefore(listeErreurs.get(i).getDate())) sum++;
         }
-        return sum;
+        int div = getNbPieceTraitee();
+        float res = (float) sum/div;
+        return res*100;
     }
 
     public int getNbPieceTraitee()

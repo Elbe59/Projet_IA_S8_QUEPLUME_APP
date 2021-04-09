@@ -206,7 +206,7 @@
                     android:layout_weight="4"
                     android:gravity="center"
                     android:textAlignment="textEnd"
-                    android:text="Nombre d'erreurs en 24h : "
+                    android:text="Taux d'erreurs en 24h : "
                     android:textAppearance="?android:attr/textAppearanceMedium">
                 </TextView>
                 <TextView
