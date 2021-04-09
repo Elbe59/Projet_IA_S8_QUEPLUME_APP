@@ -55,7 +55,6 @@ public class AccueilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.activity_menu, container, false);
 
-
         mTextViewBoiteNoir = (TextView) view.findViewById(R.id.textview_boite_noir);
         mTextViewBoiteBlanc = (TextView) view.findViewById(R.id.textview_boite_blanc);
         mTextViewCouvercleBlanc = (TextView) view.findViewById(R.id.textview_couvercle_blanc);
@@ -65,15 +64,10 @@ public class AccueilFragment extends Fragment {
         mTextViewNbrTraiter = (TextView) view.findViewById(R.id.textview_nbr_pieces_24h);
         mTextViewNbrErreurs = (TextView) view.findViewById(R.id.textview_nbr_erreurs_24h);
 
-        ArrayList<TextView> listTextView = new ArrayList<>();
-        listTextView.add(mTextViewBoiteNoir);listTextView.add(mTextViewBoiteBlanc);listTextView.add(mTextViewCouvercleBlanc);
-        listTextView.add(mTextViewCouvercleNoir);listTextView.add(mTextViewGoupilleRouge);listTextView.add(mTextViewGoupilleGris);
-
         HashMap<TextView,String> listTextViewToDatabase = new HashMap<>();
         listTextViewToDatabase.put(mTextViewBoiteNoir,"boite_noir");listTextViewToDatabase.put(mTextViewBoiteBlanc,"boite_blanc");
         listTextViewToDatabase.put(mTextViewCouvercleNoir,"couvercle_noir");listTextViewToDatabase.put(mTextViewCouvercleBlanc,"couvercle_blanc");
         listTextViewToDatabase.put(mTextViewGoupilleGris,"goupille_gris");listTextViewToDatabase.put(mTextViewGoupilleRouge,"goupille_rouge");
-
 
         DatabaseReference zonesRef = FirebaseDatabase.getInstance().getReference();
         zonesRef.addValueEventListener(new ValueEventListener() {
@@ -92,7 +86,6 @@ public class AccueilFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 
@@ -105,10 +98,7 @@ public class AccueilFragment extends Fragment {
                 "OUI",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // Fonction de base
                         String falseDatabase = "false_";
-                        //listTextViewToDatabase.get(textView)
-                        //textView.setBackgroundColor(blanc);
                         DatabaseReference updateData = FirebaseDatabase.getInstance().getReference("resultat");
                         String childToModify = falseDatabase+nameInDatabase;
                         updateData.child(childToModify).setValue(0);
@@ -174,11 +164,14 @@ public class AccueilFragment extends Fragment {
         // Met à jour le taux de remplissage de chaque bac
         Map<String,Integer> hashMapActualData = new HashMap<>();
         hashMapActualData = Singleton.getInstance().getHashMapDataActuel();
+        Map<String,Integer> hashMapNbrMaxParBac = new HashMap<>();
+        hashMapNbrMaxParBac = Singleton.getInstance().getHashMapNbrMaxParBacActuel();
 
-        for(Map.Entry<TextView, String> entry : listTextViewToDatabase.entrySet()) {
+        for(Map.Entry<TextView, String> entry : listTextViewToDatabase.entrySet()) { // Parcours tous les TextView avec leur nom dans la database
             String falseDatabase = "false_";
             String trueDatabase = "true_";
             Integer valeurCorrespondante = hashMapActualData.get(trueDatabase+entry.getValue());
+            Integer valeurMaxCorrespondante = hashMapNbrMaxParBac.get(entry.getValue());
             System.out.println(entry.getKey() + " - " + entry.getValue());
 
             if(hashMapActualData.get(falseDatabase+entry.getValue()) >= 1) {
@@ -191,8 +184,8 @@ public class AccueilFragment extends Fragment {
                     }
                 });
             } else {
-                entry.getKey().setText(valeurCorrespondante.toString());
-                if(hashMapActualData.get(trueDatabase+entry.getValue()) >= 3){
+                entry.getKey().setText(valeurCorrespondante.toString() + " / " + valeurMaxCorrespondante);
+                if(hashMapActualData.get(trueDatabase+entry.getValue()) >= valeurMaxCorrespondante){
                     entry.getKey().setBackgroundColor(vert);
                 }
                 else {
