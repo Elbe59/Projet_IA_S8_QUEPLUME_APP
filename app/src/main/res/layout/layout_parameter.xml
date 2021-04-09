@@ -44,40 +44,25 @@
                     android:layout_margin="1dp"
                     android:paddingVertical="10px">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Boîte\nNoire"
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@drawable/ic_launcher_background"
-                        android:textStyle="bold"
-                        android:gravity="center"
+                    <ImageView
+                        android:src="@drawable/boite_noire"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
                         />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Couvercle\nNoir"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@drawable/ic_launcher_background"
-                        android:gravity="center"
-                        android:textStyle="bold"
+                    <ImageView
+                        android:src="@drawable/couvercle_noir"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
                         />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Goupille\nRouge"
-                        android:layout_margin="1dp"
-                        android:background="@drawable/ic_launcher_background"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_column="2"
+                    <ImageView
+                        android:src="@drawable/goupille_rouge"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
                         />
                 </TableRow>
 
@@ -216,41 +201,25 @@
                     android:layout_margin="1dp"
                     android:paddingVertical="10px">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Boîte\nBlanche"
-                        android:layout_margin="1dp"
-                        android:layout_column="0"
-                        android:background="@drawable/ic_launcher_background"
-                        android:textStyle="bold"
-                        android:gravity="center"
-
+                    <ImageView
+                        android:src="@drawable/boite_blanche"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
                         />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Couvercle\nBlanc"
-                        android:layout_margin="1dp"
-                        android:layout_column="1"
-                        android:background="@drawable/ic_launcher_background"
-                        android:gravity="center"
-                        android:textStyle="bold"
+                    <ImageView
+                        android:src="@drawable/couvercle_blanc"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
                         />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Goupille\nGrise"
-                        android:layout_margin="1dp"
-                        android:background="@drawable/ic_launcher_background"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_column="2"
+                    <ImageView
+                        android:src="@drawable/goupille_grise"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
                         />
                 </TableRow>
 
