@@ -41,8 +41,9 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_margin="1dp"
-                    android:paddingVertical="10px">
+                    android:layout_marginTop="30dp"
+                    android:paddingVertical="10px"
+                    >
 
                     <ImageView
                         android:src="@drawable/boite_noire"
@@ -68,9 +69,9 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="1dp"
+                    android:layout_height="wrap_content"
                     android:paddingBottom="2dp"
+                    android:layout_marginBottom="30dp"
                     >
 
                     <LinearLayout
@@ -91,8 +92,7 @@
                         <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             >
                             <Button
                                 android:layout_width="match_parent"
@@ -131,8 +131,7 @@
                         <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             >
                             <Button
                                 android:layout_width="match_parent"
@@ -171,8 +170,7 @@
                         <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             >
                             <Button
                                 android:layout_width="match_parent"
@@ -198,8 +196,9 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_margin="1dp"
-                    android:paddingVertical="10px">
+                    android:layout_marginTop="30dp"
+                    android:paddingVertical="10px"
+                    >
 
                     <ImageView
                         android:src="@drawable/boite_blanche"
@@ -225,9 +224,9 @@
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="2dp"
+                    android:layout_marginBottom="30dp"
                     >
                     <LinearLayout
                         android:orientation="vertical"
@@ -247,8 +246,7 @@
                         <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             >
                             <Button
                                 android:layout_width="match_parent"
@@ -287,8 +285,7 @@
                         <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             >
                             <Button
                                 android:layout_width="match_parent"
@@ -327,8 +324,7 @@
                         <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             >
                             <Button
                                 android:layout_width="match_parent"
