@@ -44,6 +44,7 @@ import java.util.Map;
 
 import fr.hei.que_plume_app.entity.ActualData;
 import fr.hei.que_plume_app.entity.AjoutData;
+import fr.hei.que_plume_app.entity.NbrMaxObjetParBac;
 
 public class Singleton {
 
@@ -55,6 +56,7 @@ public class Singleton {
     private ArrayList<AjoutData> listeErreurs = new ArrayList<AjoutData>();
     private ArrayList<AjoutData> listeTotal = new ArrayList<AjoutData>();
     private ActualData dataActuel = new ActualData(); // Va contenir le nombre d'objet par bac.
+    private NbrMaxObjetParBac maxObjetParBac = new NbrMaxObjetParBac(); // Va contenir le nombre d'objet par bac.
     private DatabaseReference mDatabase;
 
     private Integer placeInBox_Couvercle_Noir = 3;
@@ -193,7 +195,7 @@ public class Singleton {
 
         DatabaseReference zonesRefErreurs = FirebaseDatabase.getInstance().getReference("traites");
         DatabaseReference zonesRefActuel = FirebaseDatabase.getInstance().getReference("resultat");
-
+        DatabaseReference zonesRefMaxParBac = FirebaseDatabase.getInstance().getReference("nbrMaxParBac");
 
         Toast toast_db = Toast.makeText(c,"Trying to connect to the database...", Toast.LENGTH_SHORT);
 
@@ -245,34 +247,29 @@ public class Singleton {
                 Log.w(TAG, "onCancelled", databaseError.toException());
             }
         });
-
-        /*if(showToasts) toast_db.show();
-        ArrayList<String> nameSubErreurs = new ArrayList<>();
-
-        zonesRefErreurs.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+        zonesRefMaxParBac.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                toast_db.cancel();
-
-                if(task.isSuccessful()){
-                    task.getResult().getChildren().forEach(t -> {
-                        if(t != null) {
-                            System.out.println(t.getKey()+" POUR LE MAIN DE TEST");
-                            nameSubErreurs.add(t.getKey());
-                        }
-                    });
-                    toast_db.setText("Database synced.");
-                }else{
-                    toast_db.setText("Error: Couldn't connect to the database.\nPlease restart the app and check your internet connexion.");
-                }
-                //if(showToasts) toast_db.show();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                maxObjetParBac = new NbrMaxObjetParBac();
+                maxObjetParBac = dataSnapshot.getValue(NbrMaxObjetParBac.class); // A modifier en fct de ce qui est écrit dans la database
             }
-        });*/
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                toast_db.setText("Error: Couldn't connect to the database.\nPlease restart the app and check your internet connexion.");
+                Log.w(TAG, "onCancelled", databaseError.toException());
+            }
+        });
     }
+
+
 
     public Map<String,Integer> getHashMapDataActuel() {
         return dataActuel.getMaHashMapDataActuel();
+    }
+
+    public Map<String,Integer> getHashMapNbrMaxParBacActuel() {
+        return maxObjetParBac.getHashMapNbrObjetParBac();
     }
 
     public Date getDateActual(){
