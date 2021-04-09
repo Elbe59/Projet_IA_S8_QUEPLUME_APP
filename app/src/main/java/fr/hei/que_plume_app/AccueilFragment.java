@@ -204,7 +204,7 @@ public class AccueilFragment extends Fragment {
                     entry.getKey().setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast toast = Toast.makeText(getContext(),"Erreur: quantité réglée sur 0", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getContext(),"Erreur: Quantité réglée sur 0", Toast.LENGTH_SHORT);
                             toast.show();
                         }
                     });
