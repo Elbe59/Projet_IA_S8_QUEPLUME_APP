@@ -255,6 +255,8 @@ public class Singleton {
         });
     }
 
+
+
     public Map<String,Integer> getHashMapDataActuel() {
         return dataActuel.getMaHashMapDataActuel();
     }
