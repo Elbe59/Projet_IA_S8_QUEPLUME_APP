@@ -57,6 +57,13 @@ public class Singleton {
     private ActualData dataActuel = new ActualData(); // Va contenir le nombre d'objet par bac.
     private DatabaseReference mDatabase;
 
+    private Integer placeInBox_Couvercle_Noir = 3;
+    private Integer placeInBox_Couvercle_Blanc = 3;
+    private Integer placeInBox_Boite_Blanc = 3;
+    private Integer placeInBox_Boite_Noir = 3;
+    private Integer placeInBox_Goupille_Gris = 3;
+    private Integer placeInBox_Goupille_Rouge = 3;
+
     public Singleton()
     { }
 
@@ -71,7 +78,7 @@ public class Singleton {
     {
         ArrayList<String> res = new ArrayList<String>();
         for (int i = 0; i < this.listeErreurs.size() ; i++) {
-            res.add(this.listeErreurs.get(i).getType_trouve()+"-"+this.listeErreurs.get(i).getCouleur_trouvee());
+            res.add(this.listeErreurs.get(i).getType_trouve()+"_"+this.listeErreurs.get(i).getCouleur_trouvee());
         }
         return res;
     }
@@ -80,7 +87,7 @@ public class Singleton {
     {
         ArrayList<String> res = new ArrayList<String>();
         for (int i = 0; i < this.listeErreurs.size() ; i++) {
-            res.add(this.listeErreurs.get(i).getType_reel()+"-"+this.listeErreurs.get(i).getCouleur_reelle());
+            res.add(this.listeErreurs.get(i).getType_reel()+"_"+this.listeErreurs.get(i).getCouleur_reelle());
         }
         return res;
     }
@@ -323,5 +330,83 @@ public class Singleton {
         }
         return sum;
     }
+
+    /*public ArrayList<Integer> getIntDate(String str)
+    {
+        ArrayList<Integer> intDate = new ArrayList<Integer>();
+        if (str.length()<19) return null;
+        else{
+            intDate.add(Integer.parseInt(str.charAt(0)+""+str.charAt(1)+""+str.charAt(2)+""+str.charAt(3)+""));
+            intDate.add(Integer.parseInt(str.charAt(5)+""+str.charAt(6)+""));
+            intDate.add(Integer.parseInt(str.charAt(8)+""+str.charAt(9)+""));
+            intDate.add(Integer.parseInt(str.charAt(11)+""+str.charAt(12)+""));
+            intDate.add(Integer.parseInt(str.charAt(14)+""+str.charAt(15)+""));
+            intDate.add(Integer.parseInt(str.charAt(17)+""+str.charAt(18)+""));
+            return intDate;
+        }
+    }
+
+    public boolean isDateMoreThanADayBefore(String past)
+    {
+        boolean inThePast = false;
+        ArrayList<Integer> pastDate = getIntDate(past);
+        ArrayList<Integer> actualDate = getIntDate(getDateActual());
+        if (pastDate.get(0) != actualDate.get(0) && !(pastDate.get(2) == 12 && actualDate.get(2) == 1 && actualDate.get(3)<pastDate.get(3))) inThePast = true;
+        else{
+
+        }
+    }
+
+    public ArrayList<Integer> nextDay(int month, int day)
+    {
+        int nextMonth, nextDay;
+        if(month == 1 || month == 3 || month == 5 ||month == 7 || month == 8 || month == 10 || month == 12)
+        {
+            if (day == 31) {
+                nextMonth = month++;
+                nextDay = 1;
+            }
+            else {
+                nextDay = day++;
+                nextMonth = month;
+            }
+        }
+        else if(month == 4 || month == 6 || month == 9 ||month == 11)
+        {
+            if (day == 30) {
+                nextMonth = month++;
+                nextDay = 1;
+            }
+            else {
+                nextDay = day++;
+                nextMonth = month;
+            }
+        }
+        else
+        {
+            if (day == 30) {
+                nextMonth = month++;
+                nextDay = 1;
+            }
+            else {
+                nextDay = day++;
+                nextMonth = month;
+            }
+        }
+    }*/
+
+    public int getPlaceInBox_Couvercle_Noir () { return placeInBox_Couvercle_Noir; }
+    public int getPlaceInBox_Couvercle_Blanc () { return placeInBox_Couvercle_Blanc; }
+    public int getPlaceInBox_Boite_Blanc () { return placeInBox_Boite_Blanc; }
+    public int getPlaceInBox_Boite_Noir () { return placeInBox_Boite_Noir; }
+    public int getPlaceInBox_Goupille_Gris () { return placeInBox_Goupille_Gris; }
+    public int getPlaceInBox_Goupille_Rouge () { return placeInBox_Goupille_Rouge; }
+
+    public void setPlaceInBox_Couvercle_Noir (int nombre) { placeInBox_Couvercle_Noir = nombre; }
+    public void setPlaceInBox_Couvercle_Blanc (int nombre) { placeInBox_Couvercle_Blanc = nombre; }
+    public void setPlaceInBox_Boite_Blanc (int nombre) { placeInBox_Boite_Blanc = nombre; }
+    public void setPlaceInBox_Boite_Noir (int nombre) { placeInBox_Boite_Noir = nombre; }
+    public void setPlaceInBox_Goupille_Gris (int nombre) { placeInBox_Goupille_Gris = nombre; }
+    public void setPlaceInBox_Goupille_Rouge (int nombre) { placeInBox_Goupille_Rouge = nombre; }
 }
 
