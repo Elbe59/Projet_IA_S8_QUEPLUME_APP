@@ -198,6 +198,17 @@ public class AccueilFragment extends Fragment {
                     }
                 });
 
+                if(valeurMaxCorrespondante == 0){
+                    entry.getKey().setText("Inactif");
+                    entry.getKey().setBackgroundColor(rouge);
+                    entry.getKey().setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast toast = Toast.makeText(getContext(),"Erreur: quantité réglée sur 0", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                    });
+                }
             }
         }
 
