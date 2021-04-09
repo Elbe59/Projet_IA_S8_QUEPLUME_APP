@@ -1,5 +1,6 @@
 package fr.hei.que_plume_app;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -96,7 +97,6 @@ public class AccueilFragment extends Fragment {
     }
 
     public void onClickRemoveError(View view, TextView textView, String nameInDatabase) {
-
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
         builder1.setMessage("Avez-vous vérifié l'erreur ?");
         builder1.setCancelable(true);
