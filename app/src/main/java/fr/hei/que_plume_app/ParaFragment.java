@@ -50,6 +50,8 @@ public class ParaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_parameter, container, false);
 
+        Log.d(TAG, "création de la fenêtre");
+
         Tboite_blanc = view.findViewById(R.id.textview_boite_blanc_para);
         Tboite_noir = view.findViewById(R.id.textview_boite_noir_para);
         Tcouvercle_blanc = view.findViewById(R.id.textview_couvercle_blanc_para);
@@ -152,6 +154,7 @@ public class ParaFragment extends Fragment {
     }
 
     public void MAJtexts(){
+        Log.d(TAG, "Maj des textviews");
         Tboite_blanc.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_blanc());
         Tboite_noir.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_noir());
         Tcouvercle_blanc.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_blanc());
@@ -162,6 +165,7 @@ public class ParaFragment extends Fragment {
 
     public void updateDB(String type, int ope, int lastValue)
     {
+        Log.d(TAG, ope+" une place sur "+type);
         String childName = "nbrMax_"+type;
         if (ope==-1 && lastValue >0)
         {
