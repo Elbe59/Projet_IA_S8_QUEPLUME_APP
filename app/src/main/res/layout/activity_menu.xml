@@ -190,6 +190,7 @@
                     android:gravity="center"
                     android:textAlignment="textEnd"
                     android:text="Nombre de pièces traitées en 24h : "
+                    android:textColor="#000000"
                     android:textSize="15dp"
                     android:textAppearance="?android:attr/textAppearanceMedium">
 
@@ -199,6 +200,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:textColor="#000000"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_weight="1">
                 </TextView>
@@ -215,6 +217,7 @@
                     android:layout_weight="4"
                     android:gravity="center"
                     android:textAlignment="textEnd"
+                    android:textColor="#000000"
                     android:text="Taux d'erreurs en 24h : "
                     android:textAppearance="?android:attr/textAppearanceMedium">
                 </TextView>
@@ -224,6 +227,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textColor="#000000"
                     android:textAppearance="?android:attr/textAppearanceMedium">
                 </TextView>
             </LinearLayout>
