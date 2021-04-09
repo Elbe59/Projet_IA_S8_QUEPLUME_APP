@@ -46,6 +46,7 @@ public class AccueilFragment extends Fragment {
     int rouge = 255*256*256*256+255*256*256+0*256+0;
     int blanc = 255*256*256*256+255*256*256+255*256+255;
     int vert = Color.GREEN;
+    int gris = 255*256*256*256+178*256*256+178*256+178;
 
     private String TAG = "Fragment Accueil";
 
@@ -213,7 +214,7 @@ public class AccueilFragment extends Fragment {
 
                 if(valeurMaxCorrespondante == 0){
                     entry.getKey().setText("Inactif");
-                    entry.getKey().setBackgroundColor(rouge);
+                    entry.getKey().setBackgroundColor(gris);
                     entry.getKey().setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
