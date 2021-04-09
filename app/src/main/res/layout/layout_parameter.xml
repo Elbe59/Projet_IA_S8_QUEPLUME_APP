@@ -98,7 +98,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="+"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="1dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_boite_noir_plus">
                             </Button>
@@ -106,7 +108,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="-"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_boite_noir_minus">
                             </Button>
@@ -137,7 +141,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="+"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="1dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_couvercle_noir_plus">
                             </Button>
@@ -145,7 +151,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="-"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_couvercle_noir_minus">
                             </Button>
@@ -176,7 +184,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="+"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="1dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_goupille_rouge_plus">
                             </Button>
@@ -184,7 +194,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="-"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_goupille_rouge_minus">
                             </Button>
@@ -252,7 +264,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="+"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="1dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_boite_blanc_plus">
                             </Button>
@@ -260,7 +274,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="-"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_boite_blanc_minus">
                             </Button>
@@ -291,7 +307,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="+"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="1dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_couvercle_blanc_plus">
                             </Button>
@@ -299,7 +317,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="-"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_couvercle_blanc_minus">
                             </Button>
@@ -330,7 +350,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="+"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="1dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_goupille_gris_plus">
                             </Button>
@@ -338,7 +360,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="-"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1"
                                 android:id="@+id/button_goupille_gris_minus">
                             </Button>
