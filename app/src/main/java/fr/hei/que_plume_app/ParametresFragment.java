@@ -20,8 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ParaFragment extends Fragment {
-    public ParaFragment(){}
+public class ParametresFragment extends Fragment {
+    public ParametresFragment(){}
 
     private String TAG = "parameter_fragment";
 
