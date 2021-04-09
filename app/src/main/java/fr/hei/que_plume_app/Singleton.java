@@ -1,12 +1,22 @@
 package fr.hei.que_plume_app;
 
+import android.app.Application;
 import android.content.Context;
 
+import android.hardware.usb.UsbInterface;
+
+import android.icu.util.Calendar;
+import android.icu.util.TimeZone;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,11 +26,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -38,13 +56,6 @@ public class Singleton {
     private ArrayList<AjoutData> listeTotal = new ArrayList<AjoutData>();
     private ActualData dataActuel = new ActualData(); // Va contenir le nombre d'objet par bac.
     private DatabaseReference mDatabase;
-
-    public Integer placeInBox_Couvercle_Noir = 4;
-    public Integer placeInBox_Couvercle_Blanc = 4;
-    public Integer placeInBox_Boite_Blanc = 4;
-    public Integer placeInBox_Boite_Noir = 4;
-    public Integer placeInBox_Goupille_Gris = 4;
-    public Integer placeInBox_Goupille_Rouge = 4;
 
     public Singleton()
     { }
@@ -376,19 +387,5 @@ public class Singleton {
             }
         }
     }*/
-
-    public int getPlaceInBox_Couvercle_Noir () { return placeInBox_Couvercle_Noir; }
-    public int getPlaceInBox_Couvercle_Blanc () { return placeInBox_Couvercle_Blanc; }
-    public int getPlaceInBox_Boite_Blanc () { return placeInBox_Boite_Blanc; }
-    public int getPlaceInBox_Boite_Noir () { return placeInBox_Boite_Noir; }
-    public int getPlaceInBox_Goupille_Gris () { return placeInBox_Goupille_Gris; }
-    public int getPlaceInBox_Goupille_Rouge () { return placeInBox_Goupille_Rouge; }
-
-    public void setPlaceInBox_Couvercle_Noir (int nombre) { placeInBox_Couvercle_Noir = nombre; }
-    public void setPlaceInBox_Couvercle_Blanc (int nombre) { placeInBox_Couvercle_Blanc = nombre; }
-    public void setPlaceInBox_Boite_Blanc (int nombre) { placeInBox_Boite_Blanc = nombre; }
-    public void setPlaceInBox_Boite_Noir (int nombre) { placeInBox_Boite_Noir = nombre; }
-    public void setPlaceInBox_Goupille_Gris (int nombre) { placeInBox_Goupille_Gris = nombre; }
-    public void setPlaceInBox_Goupille_Rouge (int nombre) { placeInBox_Goupille_Rouge = nombre; }
 }
 
