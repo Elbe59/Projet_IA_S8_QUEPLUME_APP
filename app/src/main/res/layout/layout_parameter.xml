@@ -230,7 +230,7 @@
                         />
 
                     <ImageView
-                        android:src="@drawable/goupille_grise"
+                        android:src="@drawable/goupille_blanche"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
@@ -345,7 +345,7 @@
                             android:textStyle="bold"
                             android:gravity="center"
                             android:layout_weight="1"
-                            android:id="@+id/textview_goupille_gris_para">
+                            android:id="@+id/textview_goupille_blanc_para">
                         </TextView>
                         <LinearLayout
                             android:orientation="horizontal"
@@ -360,7 +360,7 @@
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="1dp"
                                 android:layout_weight="1"
-                                android:id="@+id/button_goupille_gris_plus">
+                                android:id="@+id/button_goupille_blanc_plus">
                             </Button>
                             <Button
                                 android:layout_width="match_parent"
@@ -370,7 +370,7 @@
                                 android:layout_marginLeft="1dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_weight="1"
-                                android:id="@+id/button_goupille_gris_minus">
+                                android:id="@+id/button_goupille_blanc_minus">
                             </Button>
                         </LinearLayout>
 

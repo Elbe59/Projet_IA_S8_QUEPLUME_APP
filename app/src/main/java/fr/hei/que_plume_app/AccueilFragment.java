@@ -54,7 +54,7 @@ public class AccueilFragment extends Fragment {
     private TextView mTextViewCouvercleNoir;
     private TextView mTextViewCouvercleBlanc;
     private TextView mTextViewGoupilleRouge;
-    private TextView mTextViewGoupilleGris;
+    private TextView mTextViewGoupilleBlanc;
     private TextView mTextViewNbrErreurs;
     private TextView mTextViewNbrTraiter;
     private HashMap<TextView,String> listTextViewToDatabase = new HashMap<>(); // Va contenir une hashMap avec pour clé la textview et comme valeur le string dans la base de la base de donnée.
@@ -79,7 +79,7 @@ public class AccueilFragment extends Fragment {
         mTextViewBoiteBlanc = (TextView) view.findViewById(R.id.textview_boite_blanc);
         mTextViewCouvercleBlanc = (TextView) view.findViewById(R.id.textview_couvercle_blanc);
         mTextViewCouvercleNoir = (TextView) view.findViewById(R.id.textview_couvercle_noir);
-        mTextViewGoupilleGris = (TextView) view.findViewById(R.id.textview_goupille_gris);
+        mTextViewGoupilleBlanc = (TextView) view.findViewById(R.id.textview_goupille_blanc);
         mTextViewGoupilleRouge = (TextView) view.findViewById(R.id.textview_goupille_rouge);
         mTextViewNbrTraiter = (TextView) view.findViewById(R.id.textview_nbr_pieces_24h);
         mTextViewNbrErreurs = (TextView) view.findViewById(R.id.textview_nbr_erreurs_24h);
@@ -90,7 +90,7 @@ public class AccueilFragment extends Fragment {
         HashMap<TextView,String> listTextViewToDatabase = new HashMap<>();
         listTextViewToDatabase.put(mTextViewBoiteNoir,"boite_noir");listTextViewToDatabase.put(mTextViewBoiteBlanc,"boite_blanc");
         listTextViewToDatabase.put(mTextViewCouvercleNoir,"couvercle_noir");listTextViewToDatabase.put(mTextViewCouvercleBlanc,"couvercle_blanc");
-        listTextViewToDatabase.put(mTextViewGoupilleGris,"goupille_gris");listTextViewToDatabase.put(mTextViewGoupilleRouge,"goupille_rouge");
+        listTextViewToDatabase.put(mTextViewGoupilleBlanc,"goupille_blanc");listTextViewToDatabase.put(mTextViewGoupilleRouge,"goupille_rouge");
 
         DatabaseReference zonesRef = FirebaseDatabase.getInstance().getReference(); // Fait une référence au début de l'arborescence de la base de donnée
 
@@ -212,6 +212,7 @@ public class AccueilFragment extends Fragment {
             Integer valeurMaxCorrespondante = hashMapNbrMaxParBac.get(entry.getValue()); // Nombre de pièce max dans le bac
             System.out.println(entry.getKey() + " - " + entry.getValue());
 
+            Log.d("Emile",entry.getValue());
             if(hashMapActualData.get(falseDatabase+entry.getValue()) >= 1) { // Si il y a une erreur dans le bac correspondant au textView
                 entry.getKey().setText("Erreur");
                 entry.getKey().setBackgroundColor(rouge);

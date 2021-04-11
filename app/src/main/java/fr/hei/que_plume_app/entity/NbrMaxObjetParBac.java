@@ -13,7 +13,7 @@ public class NbrMaxObjetParBac {
     private Integer nbrMax_boite_noir;
     private Integer nbrMax_couvercle_blanc;
     private Integer nbrMax_couvercle_noir;
-    private Integer nbrMax_goupille_gris;
+    private Integer nbrMax_goupille_blanc;
     private Integer nbrMax_goupille_rouge;
 
     public NbrMaxObjetParBac(){}
@@ -50,12 +50,12 @@ public class NbrMaxObjetParBac {
         this.nbrMax_couvercle_noir = nbrMax_couvercle_noir;
     }
 
-    public Integer getNbrMax_goupille_gris() {
-        return nbrMax_goupille_gris;
+    public Integer getNbrMax_goupille_blanc() {
+        return nbrMax_goupille_blanc;
     }
 
-    public void setNbrMax_goupille_gris(Integer nbrMax_goupille_gris) {
-        this.nbrMax_goupille_gris = nbrMax_goupille_gris;
+    public void setNbrMax_goupille_blanc(Integer nbrMax_goupille_blanc) {
+        this.nbrMax_goupille_blanc = nbrMax_goupille_blanc;
     }
 
     public Integer getNbrMax_goupille_rouge() {
@@ -68,7 +68,7 @@ public class NbrMaxObjetParBac {
 
     public Map<String,Integer> getHashMapNbrObjetParBac(){
         Map<String,Integer> mapMaxNbrObjet = new HashMap<String,Integer>();
-        mapMaxNbrObjet.put("goupille_gris", getNbrMax_goupille_gris());
+        mapMaxNbrObjet.put("goupille_blanc", getNbrMax_goupille_blanc());
         mapMaxNbrObjet.put("goupille_rouge",getNbrMax_goupille_rouge());
         mapMaxNbrObjet.put("couvercle_noir",getNbrMax_couvercle_noir());
         mapMaxNbrObjet.put("couvercle_blanc",getNbrMax_couvercle_blanc());

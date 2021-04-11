@@ -8,7 +8,7 @@ import java.util.Map;
 public class ActualData {
 
 
-    private Integer true_goupille_gris;
+    private Integer true_goupille_blanc;
     private Integer true_goupille_rouge;
     private Integer true_couvercle_noir;
     private Integer true_couvercle_blanc;
@@ -16,7 +16,7 @@ public class ActualData {
     private Integer true_boite_blanc;
 
 
-    private Integer false_goupille_gris;
+    private Integer false_goupille_blanc;
     private Integer false_goupille_rouge;
     private Integer false_couvercle_noir;
     private Integer false_couvercle_blanc;
@@ -28,13 +28,13 @@ public class ActualData {
 // HashMap qui permet de lier le nom dans la base de donnée avec la valeur correspondante pour chacun des paramètres
     public Map<String, Integer> getMaHashMapDataActuel() {
         Map<String,Integer> maHashMapDataActuel = new HashMap<String,Integer>();
-        maHashMapDataActuel.put("true_goupille_gris", getTrue_goupille_gris());
+        maHashMapDataActuel.put("true_goupille_blanc", getTrue_goupille_blanc());
         maHashMapDataActuel.put("true_goupille_rouge",getTrue_goupille_rouge());
         maHashMapDataActuel.put("true_couvercle_noir",getTrue_couvercle_noir());
         maHashMapDataActuel.put("true_couvercle_blanc",getTrue_couvercle_blanc());
         maHashMapDataActuel.put("true_boite_noir", getTrue_boite_noir());
         maHashMapDataActuel.put("true_boite_blanc", getTrue_boite_blanc());
-        maHashMapDataActuel.put("false_goupille_gris", getFalse_goupille_gris());
+        maHashMapDataActuel.put("false_goupille_blanc", getFalse_goupille_blanc());
         maHashMapDataActuel.put("false_goupille_rouge",getFalse_goupille_rouge());
         maHashMapDataActuel.put("false_couvercle_noir",getFalse_couvercle_noir());
         maHashMapDataActuel.put("false_couvercle_blanc",getFalse_couvercle_blanc());
@@ -45,16 +45,16 @@ public class ActualData {
 
     // Affichage en string pour les logs
     public String actualDataToString(){
-        return (false_boite_blanc +" - " + false_boite_noir +" - " + false_couvercle_blanc +" - " + false_couvercle_noir +" - " + false_goupille_gris +" - " + false_goupille_rouge +" - " + true_boite_blanc +" - " + true_boite_noir +" - " + true_couvercle_blanc +" - " + true_couvercle_noir +" - " + true_goupille_gris +" - " + true_goupille_rouge);
+        return (false_boite_blanc +" - " + false_boite_noir +" - " + false_couvercle_blanc +" - " + false_couvercle_noir +" - " + false_goupille_blanc +" - " + false_goupille_rouge +" - " + true_boite_blanc +" - " + true_boite_noir +" - " + true_couvercle_blanc +" - " + true_couvercle_noir +" - " + true_goupille_blanc +" - " + true_goupille_rouge);
     }
 
 
-    public Integer getTrue_goupille_gris() {
-        return true_goupille_gris;
+    public Integer getTrue_goupille_blanc() {
+        return true_goupille_blanc;
     }
 
-    public void setTrue_goupille_gris(Integer true_goupille_gris) {
-        this.true_goupille_gris = true_goupille_gris;
+    public void setTrue_goupille_blanc(Integer true_goupille_blanc) {
+        this.true_goupille_blanc = true_goupille_blanc;
     }
 
     public Integer getTrue_goupille_rouge() {
@@ -97,12 +97,12 @@ public class ActualData {
         this.true_boite_blanc = true_boite_blanc;
     }
 
-    public Integer getFalse_goupille_gris() {
-        return false_goupille_gris;
+    public Integer getFalse_goupille_blanc() {
+        return false_goupille_blanc;
     }
 
-    public void setFalse_goupille_gris(Integer false_goupille_gris) {
-        this.false_goupille_gris = false_goupille_gris;
+    public void setFalse_goupille_blanc(Integer false_goupille_blanc) {
+        this.false_goupille_blanc = false_goupille_blanc;
     }
 
     public Integer getFalse_goupille_rouge() {

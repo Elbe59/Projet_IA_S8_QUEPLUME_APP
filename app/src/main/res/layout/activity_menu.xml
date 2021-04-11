@@ -124,7 +124,7 @@
                         />
 
                     <ImageView
-                        android:src="@drawable/goupille_grise"
+                        android:src="@drawable/goupille_blanche"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center"
@@ -164,7 +164,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/textview_goupille_gris"
+                        android:id="@+id/textview_goupille_blanc"
                         android:layout_width="wrap_content"
                         android:layout_height="80dp"
                         android:textAppearance="?android:attr/textAppearanceLarge"

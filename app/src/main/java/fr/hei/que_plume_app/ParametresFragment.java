@@ -31,21 +31,21 @@ public class ParametresFragment extends Fragment {
     private TextView Tboite_noir;
     private TextView Tcouvercle_noir;
     private TextView Tcouvercle_blanc;
-    private TextView Tgoupille_gris;
+    private TextView Tgoupille_blanc;
     private TextView Tgoupille_rouge;
 
     private Button Bboite_blanc_plus;
     private Button Bboite_noir_plus;
     private Button Bcouvercle_noir_plus;
     private Button Bcouvercle_blanc_plus;
-    private Button Bgoupille_gris_plus;
+    private Button Bgoupille_blanc_plus;
     private Button Bgoupille_rouge_plus;
 
     private Button Bboite_blanc_minus;
     private Button Bboite_noir_minus;
     private Button Bcouvercle_noir_minus;
     private Button Bcouvercle_blanc_minus;
-    private Button Bgoupille_gris_minus;
+    private Button Bgoupille_blanc_minus;
     private Button Bgoupille_rouge_minus;
 
     @Override
@@ -58,21 +58,21 @@ public class ParametresFragment extends Fragment {
         Tboite_noir = view.findViewById(R.id.textview_boite_noir_para);
         Tcouvercle_blanc = view.findViewById(R.id.textview_couvercle_blanc_para);
         Tcouvercle_noir = view.findViewById(R.id.textview_couvercle_noir_para);
-        Tgoupille_gris = view.findViewById(R.id.textview_goupille_gris_para);
+        Tgoupille_blanc = view.findViewById(R.id.textview_goupille_blanc_para);
         Tgoupille_rouge = view.findViewById(R.id.textview_goupille_rouge_para);
 
         Bboite_blanc_plus = view.findViewById(R.id.button_boite_blanc_plus);
         Bboite_noir_plus = view.findViewById(R.id.button_boite_noir_plus);
         Bcouvercle_blanc_plus = view.findViewById(R.id.button_couvercle_blanc_plus);
         Bcouvercle_noir_plus = view.findViewById(R.id.button_couvercle_noir_plus);
-        Bgoupille_gris_plus = view.findViewById(R.id.button_goupille_gris_plus);
+        Bgoupille_blanc_plus = view.findViewById(R.id.button_goupille_blanc_plus);
         Bgoupille_rouge_plus = view.findViewById(R.id.button_goupille_rouge_plus);
 
         Bboite_blanc_minus = view.findViewById(R.id.button_boite_blanc_minus);
         Bboite_noir_minus = view.findViewById(R.id.button_boite_noir_minus);
         Bcouvercle_blanc_minus = view.findViewById(R.id.button_couvercle_blanc_minus);
         Bcouvercle_noir_minus = view.findViewById(R.id.button_couvercle_noir_minus);
-        Bgoupille_gris_minus = view.findViewById(R.id.button_goupille_gris_minus);
+        Bgoupille_blanc_minus = view.findViewById(R.id.button_goupille_blanc_minus);
         Bgoupille_rouge_minus = view.findViewById(R.id.button_goupille_rouge_minus);
 
         // Pour chacun des bacs on crée deux boutons qui permettent d'augmenter ou bien de diminuer le nombre maximal de pièce dans le bac
@@ -96,9 +96,9 @@ public class ParametresFragment extends Fragment {
                 updateDB("couvercle_noir",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_noir());
             }
         });
-        Bgoupille_gris_plus.setOnClickListener(new View.OnClickListener() {
+        Bgoupille_blanc_plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                updateDB("goupille_gris",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_gris());
+                updateDB("goupille_blanc",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_blanc());
             }
         });
         Bgoupille_rouge_plus.setOnClickListener(new View.OnClickListener() {
@@ -127,9 +127,9 @@ public class ParametresFragment extends Fragment {
                 updateDB("couvercle_noir",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_noir());
             }
         });
-        Bgoupille_gris_minus.setOnClickListener(new View.OnClickListener() {
+        Bgoupille_blanc_minus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                updateDB("goupille_gris",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_gris());
+                updateDB("goupille_blanc",-1,Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_blanc());
             }
         });
         Bgoupille_rouge_minus.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +163,7 @@ public class ParametresFragment extends Fragment {
         Tboite_noir.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_noir());
         Tcouvercle_blanc.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_blanc());
         Tcouvercle_noir.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_couvercle_noir());
-        Tgoupille_gris.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_gris());
+        Tgoupille_blanc.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_blanc());
         Tgoupille_rouge.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_rouge());
     }
 
