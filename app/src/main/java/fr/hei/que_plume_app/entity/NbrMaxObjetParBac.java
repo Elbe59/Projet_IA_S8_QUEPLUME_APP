@@ -3,6 +3,11 @@ package fr.hei.que_plume_app.entity;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
+/*
+    Permet de configurer le nombre de pièce maximal par bacs.
+ */
 public class NbrMaxObjetParBac {
     private Integer nbrMax_boite_blanc;
     private Integer nbrMax_boite_noir;

@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+       // - StatistiqueFragment: Ce fragment permet de voir quelques statistiques à propos des erreurs (Quels sont les erreurs avec la plus grande occurrence).
+
 public class StatistiqueFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -39,10 +41,11 @@ public class StatistiqueFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         Singleton.getInstance().adapter_statistique = new StatistiqueAdapter();
-        recyclerView.setAdapter(Singleton.getInstance().adapter_statistique);
+        recyclerView.setAdapter(Singleton.getInstance().adapter_statistique); // Le recycler view est initialisé dans le Singleton pour être mis à jour dès qu'i y a une modification
         return view;
     }
 
+    // Recycler View qui se met à jour à partir du Singleton dès que la base de donnée est modifée
     public class StatistiqueAdapter  extends RecyclerView.Adapter<StatistiqueAdapter.MyviewHolder> {
         @NonNull
         @Override
@@ -76,6 +79,7 @@ public class StatistiqueFragment extends Fragment {
             }
 
             public void setLine(ArrayList<String> line) {
+                //Sur chaque ligne du recycler view on affiche la prediction de l'IA, le bac dans lequel l'objet a été placé ainsi que l'occurrence de l'erreur
                 mTextView_predictionIA.setText(line.get(1));
                 mTextView_realite.setText(line.get(0));
                 mTextView_total_erreur.setText(line.get(2));

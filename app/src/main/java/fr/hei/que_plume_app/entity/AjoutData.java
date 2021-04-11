@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+// Chaque objet AjoutData, va correspondre à un traitement de la part de l'IA.
+// Cet objet à plusieurs paramètre, le type et la couleur du bac dans lequel l'objet a été rangé
+// ainsi que le type et la couleur de l'objet déterminé par l'IA.
 public class AjoutData {
 
     private String type_trouve;

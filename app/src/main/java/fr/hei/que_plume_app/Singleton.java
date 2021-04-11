@@ -48,15 +48,16 @@ import fr.hei.que_plume_app.entity.NbrMaxObjetParBac;
 
 public class Singleton {
 
+    // Les deux adapters pour les deux recycler view sont défini dans le Singleton afin de les notifier lorsqu'il y a un changement de donnée dans la base de donnée.
     public RecyclerView.Adapter adapter_historique;
     public RecyclerView.Adapter adapter_statistique;
 
     private static final String TAG = "Singleton: ";
     private static Singleton singleton;
-    private ArrayList<AjoutData> listeErreurs = new ArrayList<AjoutData>();
-    private ArrayList<AjoutData> listeTotal = new ArrayList<AjoutData>();
+    private ArrayList<AjoutData> listeErreurs = new ArrayList<AjoutData>(); // Va contenir la liste des erreurs
+    private ArrayList<AjoutData> listeTotal = new ArrayList<AjoutData>(); // Va contenir la liste de toute les observation de l'IA
     private ActualData dataActuel = new ActualData(); // Va contenir le nombre d'objet par bac.
-    private NbrMaxObjetParBac maxObjetParBac = new NbrMaxObjetParBac(); // Va contenir le nombre d'objet par bac.
+    private NbrMaxObjetParBac maxObjetParBac = new NbrMaxObjetParBac(); // Va contenir le nombre de pièce maximum par bac.
     private DatabaseReference mDatabase;
 
     public Singleton()
@@ -70,6 +71,7 @@ public class Singleton {
         return singleton;
     }
 
+    // Meilleur affichage de la prédiction:  type-couleur
     public ArrayList<String> getTypePred()
     {
         ArrayList<String> res = new ArrayList<String>();
@@ -84,6 +86,7 @@ public class Singleton {
         return this.maxObjetParBac;
     }
 
+    // Meilleur affichage du bac dans lequel est placé l'objet:  type-couleur
     public ArrayList<String> getTypeReel()
     {
         ArrayList<String> res = new ArrayList<String>();
@@ -93,6 +96,7 @@ public class Singleton {
         return res;
     }
 
+    // Permet de récupérer la liste des erreurs à partir de la liste totale contenant toutes les observation de l'IA
     public ArrayList<String> getTotalErreur(){
 
         ArrayList<String> typePred = getTypePred();
@@ -178,17 +182,20 @@ public class Singleton {
     }
 
 
+    // Méthode la plus importante du Singleton qui permet de récupèrer toutes les données de la base de donnée lorsque celle ci est modifiée.
     public void fetchFromDatabase(Context c, boolean showToasts){
 
         Log.i(TAG, "Fetch from database");
-
-        DatabaseReference zonesRefErreurs = FirebaseDatabase.getInstance().getReference("traites");
+        // On fait des référenceces sur les trois branches de notre arborescence.
+        DatabaseReference zonesRefTraite = FirebaseDatabase.getInstance().getReference("traites");
         DatabaseReference zonesRefActuel = FirebaseDatabase.getInstance().getReference("resultat");
         DatabaseReference zonesRefMaxParBac = FirebaseDatabase.getInstance().getReference("nbrMaxParBac");
 
         Toast toast_db = Toast.makeText(c,"Trying to connect to the database...", Toast.LENGTH_SHORT);
 
-        zonesRefErreurs.addValueEventListener(new ValueEventListener() {
+        // Lorsque qu'on observation de l'IA est rajoutée à la base de donnée, la liste totale ainsi que la liste d'erreur sont modifiées
+        // De plus les deux adapters (Historique et Statistique) sont mis à jour.
+        zonesRefTraite.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listeErreurs = new ArrayList<AjoutData>();
@@ -210,7 +217,7 @@ public class Singleton {
                         adapter_statistique.notifyDataSetChanged();
                     }
                 }
-                Collections.reverse(listeErreurs);
+                Collections.reverse(listeErreurs); // Il faut inverser la liste des erreurs car lorsque l'on récupère les erreurs, on récupère en premier les plus anciennes alors que l'on veut les plus récentes.
                 toast_db.setText("Database synced.");
             }
 
@@ -221,12 +228,12 @@ public class Singleton {
             }
         });
 
-        // Creer un objet
+        // Lorsque un bac se remplit ou bien qu'il y a une erreur, dataActuel est redéfini.
         zonesRefActuel.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dataActuel = new ActualData();
-                dataActuel = dataSnapshot.getValue(ActualData.class); // A modifier en fct de ce qui est écrit dans la database
+                dataActuel = dataSnapshot.getValue(ActualData.class); // Les enfants dans la base de données ont le même nom que les propriété de l'objet ActualData, on peut donc directement récupérer un objet.
                 Log.i(TAG, dataActuel.actualDataToString());
                 toast_db.setText("Database synced.");
             }
@@ -237,11 +244,12 @@ public class Singleton {
                 Log.w(TAG, "onCancelled", databaseError.toException());
             }
         });
+        // Si l'utilisateur modifie le nombre de places disponible par bac alors maxObjetParBac est redéfini.
         zonesRefMaxParBac.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 maxObjetParBac = new NbrMaxObjetParBac();
-                maxObjetParBac = dataSnapshot.getValue(NbrMaxObjetParBac.class); // A modifier en fct de ce qui est écrit dans la database
+                maxObjetParBac = dataSnapshot.getValue(NbrMaxObjetParBac.class); // Les enfants dans la base de données ont le même nom que les propriété de l'objet NbrMaxObjetParBac, on peut donc directement récupérer un objet.
             }
 
             @Override
@@ -252,8 +260,6 @@ public class Singleton {
         });
     }
 
-
-
     public Map<String,Integer> getHashMapDataActuel() {
         return dataActuel.getMaHashMapDataActuel();
     }
@@ -263,8 +269,6 @@ public class Singleton {
     }
 
     public Date getDateActual(){
-        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //String currentDateandTime = sdf.format(new Date());
         Date date = new Date();
         return date;
     }
@@ -275,6 +279,7 @@ public class Singleton {
         return date;
     }
 
+    // Récupère la différence de temps entre deux date pour ne garder que les dernières 24h lors du calcul du taux d'erreur
     public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit)
     {
         long diffInMillies = date2.getTime() - date1.getTime();
@@ -282,6 +287,7 @@ public class Singleton {
         return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
     }
 
+    // return true, si l'observation a eu lieu il y a moins de 24h
     public boolean isDateLessThanADayBefore(String strDate)
     {
         Date oldDate = null;

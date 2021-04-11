@@ -3,6 +3,8 @@ package fr.hei.que_plume_app.entity;
 import java.util.HashMap;
 import java.util.Map;
 
+// Un objet AjoutData, contient le remplissage actuel des bacs ainsi que certains paramètre qui définissent si il y a
+// ou non une erreur dans un des bacs.
 public class ActualData {
 
 
@@ -23,7 +25,7 @@ public class ActualData {
 
 
     public ActualData(){}
-
+// HashMap qui permet de lier le nom dans la base de donnée avec la valeur correspondante pour chacun des paramètres
     public Map<String, Integer> getMaHashMapDataActuel() {
         Map<String,Integer> maHashMapDataActuel = new HashMap<String,Integer>();
         maHashMapDataActuel.put("true_goupille_gris", getTrue_goupille_gris());
@@ -41,6 +43,7 @@ public class ActualData {
         return maHashMapDataActuel;
     }
 
+    // Affichage en string pour les logs
     public String actualDataToString(){
         return (false_boite_blanc +" - " + false_boite_noir +" - " + false_couvercle_blanc +" - " + false_couvercle_noir +" - " + false_goupille_gris +" - " + false_goupille_rouge +" - " + true_boite_blanc +" - " + true_boite_noir +" - " + true_couvercle_blanc +" - " + true_couvercle_noir +" - " + true_goupille_gris +" - " + true_goupille_rouge);
     }

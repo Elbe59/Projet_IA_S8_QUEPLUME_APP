@@ -27,7 +27,15 @@ import java.util.ArrayList;
 
 import com.google.firebase.database.FirebaseDatabase;
 
-
+/*
+    On crée un menu de navigation qui permet à l'utilisateur de naviguer rapidement entre les différents
+    fragments de l'application:
+        - AccueilFragment: Sur ce fragment l'utilisateur peut visualiser un tableau de bord avec les informations en direct
+                            concernant le remplissage des bacs et les erreurs.
+        - HistoriqueFragment: Ce fragment permet de voir l'historique des erreurs, cet à dire lorsqu'une pièce a été placée dans un mauvais bac
+        - StatistiqueFragment: Ce fragment permet de voir quelques statistiques à propos des erreurs (Quels sont les erreurs avec la plus grande occurrence).
+        - ParametresFragment: Fragment permettant à l'utilisateur de modifier certain paramètre afin de configuerer l'application selon son besoin.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private String TAG = "Main_Act";

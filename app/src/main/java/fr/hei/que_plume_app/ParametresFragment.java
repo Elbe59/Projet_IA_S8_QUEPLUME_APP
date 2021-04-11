@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+// ParametresFragment: Fragment permettant à l'utilisateur de modifier certain paramètre afin de configurer l'application selon son besoin
+
 public class ParametresFragment extends Fragment {
     public ParametresFragment(){}
 
@@ -73,6 +75,7 @@ public class ParametresFragment extends Fragment {
         Bgoupille_gris_minus = view.findViewById(R.id.button_goupille_gris_minus);
         Bgoupille_rouge_minus = view.findViewById(R.id.button_goupille_rouge_minus);
 
+        // Pour chacun des bacs on crée deux boutons qui permettent d'augmenter ou bien de diminuer le nombre maximal de pièce dans le bac
         Bboite_blanc_plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 updateDB("boite_blanc",1,Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_blanc());
@@ -153,6 +156,7 @@ public class ParametresFragment extends Fragment {
         return view;
     }
 
+    // Met à jour les textview en fonction du nombre max de pièce autorisé dans le bac
     public void MAJtexts(){
         Log.d(TAG, "Maj des textviews");
         Tboite_blanc.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_boite_blanc());
@@ -163,6 +167,7 @@ public class ParametresFragment extends Fragment {
         Tgoupille_rouge.setText(""+Singleton.getInstance().getNbrMaxObj().getNbrMax_goupille_rouge());
     }
 
+    // Met à jour instantannément la base de donnée.
     public void updateDB(String type, int ope, int lastValue)
     {
         Log.d(TAG, ope+" une place sur "+type);
