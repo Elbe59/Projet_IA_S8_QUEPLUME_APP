@@ -12,20 +12,20 @@
         <TextView
             android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:id="@+id/textview_statistique_realite">
-        </TextView>
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:textColor="#000000"
             android:textStyle="bold"
             android:gravity="center"
             android:id="@+id/textview_statistique_prediction_ia">
+        </TextView>
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/textview_statistique_realite">
         </TextView>
         <TextView
             android:layout_height="match_parent"
